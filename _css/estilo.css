@@ -52,12 +52,12 @@ nav#menu{
 }
 
 nav#menu ul{
-    height: auto;
+     height: auto;
     list-style: none;
     text-transform: uppercase;
-    position: absolute;
+    position: relative;
     top: -20px;
-    left: 900px;
+    left: 350px;
 }
 
 nav#menu li{
