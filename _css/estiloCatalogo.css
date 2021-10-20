@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+section#catalogo{
+    width: 40vw; /*"vw" = view width , quanto do tamanho da tela*/
+    padding: 10px;
+}
+
+.filtro {
+    width: 112%;
+    height: 50px;
+    background: #dddddd;
+    border-radius: 8px; 
+    display: flex;
+    margin-bottom: 30px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 5px
+}
+
+.buscarInput{
+    width: 700px;
+    height: 30px;
+    text-indent: 10px;
+    margin-left: 10px;
+}
+
+.buscarProduto{
+    width: 150px;
+    height: 35px;
+    padding: 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+section .cardsProdutos {
+    max-width: 200px;
+    background: #dddddd;
+    border-radius: 5px;
+    height: 100%;
+    display: flexbox;
+    flex-direction: row;
+    padding: 10px;
+}
+
+section .cardItem{
+    background: #dddddd;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.conteudoCard {
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .cardItem img {
+    width: 70%;
+    margin-top: 10px;
+    border-radius: 3px;
+  }
+  
+  .conteudoCard h4 {
+    font-size: 15pt;
+    text-align: center;
+    margin: 5px;
+  }
+  
+  .cardItem p {
+    width: 80%;
+    font-style: italic;
+    color: #00000070;
+  }
+  
+  .cardsProdutos button {
+    width: 70%;
+    padding: 10px 0px;
+    border: none;
+    background: gray;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-bottom: 10px;
+  }
+  
+  .cardsProdutos button:hover {
+    background: black;
+    color: white;
+  }

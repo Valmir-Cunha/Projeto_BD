@@ -37,7 +37,7 @@
                 <div class="campo">
                     <label for="imagemProduto">Imagem:</label> <!--o "for" referencia para onde esse label se refere-->
                     <br>
-                    <input type="file" name="imagem" id="imagemProduto" required> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
+                    <input type="file" name="imagem" id="imagemProduto" > <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
                 </div>
                 <div class="campo">
                     <label for="nomeProduto">Nome do produto:</label>
@@ -52,9 +52,15 @@
                 </div>
     
                 <div class="campo">
+                    <label for="categoriaProduto">Categoria:</label>
+                    <br>
+                    <input type="text" name="categoria" id="categoriaProduto" required>
+                </div>
+
+                <div class="campo">
                     <label for="quantidadeProduto">Quantidade:</label>
                     <br>
-                    <input type="number" name="quantidade" id="quantidadeProduto" >
+                    <input type="number" name="quantidade" id="quantidadeProduto" required>
                 </div>
                 <div class="campo">
                     <label for="">Descrição do produto:</label>
