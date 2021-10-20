@@ -6,19 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro usuário</title>
     <link rel="stylesheet" href="_css/estiloLogin.css">
+    <style>
+        div#frame{
+            width: 500px;
+        }
+    </style>
 </head>
 <body>
     <div id="frame">
         <h1>Cadastro</h1>
-        <input type="Nome" placeholder="nome">
-        <br></br>
-        <input type="Email" placeholder="email">
-        <br></br>
-        <input type="senha" placeholder="senha">
-        <br></br>
-        <input type="senha1" placeholder="repita a senha">
-        <br></br>
-        <button>Se inscrever</button>
+        <form action="">
+            <div class="campo">
+                <label for="">Nome:</label>
+                <br>
+                <input type="text" name="nome" id="nomeUsuario" placeholder="Nome" required>
+            </div>
+            <div class="campo">
+                <label for="">Email:</label>
+                <br>
+                <input type="email" name="email" id="emailUsuario" placeholder="Email" required>
+            </div>
+            <div class="campo">
+                <label for="">Senha:</label>
+                <br>
+                <input type="password" name="senha" id="senhaUsuario" placeholder="Senha" required>
+            </div>
+            <div class="campo">
+                <label for="">Confirme a senha:</label>
+                <br>
+                <input type="password" name="confSenha" id="confSenhaUsuario" placeholder="Confirme a senha" required>
+            </div>
+            <p>Já possui cadastro? <a href="login.html">Faça Login</a></p>
+            <br>
+            <button type="submit" class="botao">Se inscrever</button>
+            <button style="margin-top: 20px;" type="button" value="voltar" onclick="history.go(-1)">Voltar</button>
+        </form>
+        
     </div>
+
+
 </body>
 </html>

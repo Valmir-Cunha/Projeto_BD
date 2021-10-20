@@ -6,10 +6,10 @@
 }
 
 body{
-    /* background-color: #dddddd; */
+    background-color: #dddddd;
     color: rgba(0, 0, 0, 1);
-    background-repeat: no-repeat;
-    background-image: linear-gradient(to bottom,cyan,yellow);
+    /* background-repeat: no-repeat; */
+    /* background-image: linear-gradient(to bottom,cyan,yellow); */
     
 }
 
@@ -28,6 +28,13 @@ div#interface h2{
     font-family: 'Titillium Web', sans-serif;
     font-size: 20pt;
     color: #000000;
+}
+
+div#interface h2#centro{
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 20pt;
+    color: #000000;
+    text-align: center;
 }
 
 header#cabecalho{
@@ -52,12 +59,12 @@ nav#menu{
 }
 
 nav#menu ul{
-     height: auto;
+    height: auto;
     list-style: none;
     text-transform: uppercase;
     position: relative;
     top: -20px;
-    left: 350px;
+    left: 42%;
 }
 
 nav#menu li{

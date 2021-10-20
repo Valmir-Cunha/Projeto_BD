@@ -10,13 +10,23 @@
 <body>
     <div id="frame">
         <h1>Login</h1>
-        <input type="login" placeholder="Login">
-        <br><br>
-        <input type="senha" placeholder="Senha">
-        <br>
-        <p>Não possui cadastro? <a href="cadrastoUsuario.html">Cadastre-se</a></p>
-        <br>
-        <button>Conectar</button>
+        <form action="">
+            <div class="campo">
+                <label for="">Email:</label>
+                <br>
+                <input type="email" name="email" id="emailLogin" placeholder="Email">
+            </div>
+            <div class="campo" style="margin-bottom: 5px; padding-bottom: 5px;">
+                <label for="">Senha:</label>
+                <br>
+                <input type="password" name="senha" id="senhaLogin" placeholder="Senha">
+            </div>
+            <p>Não possui cadastro? <a href="cadrastoUsuario.html">Cadastre-se</a></p>
+            <br>
+            <button type="submit">Conectar</button>
+            <button style="margin-top: 10px;" type="button" value="voltar" onclick="history.go(-1)">Voltar</button>
+        </form>
+        
     </div>
 </body>
 </html>

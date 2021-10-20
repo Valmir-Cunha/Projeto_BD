@@ -6,6 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="_css/estilo.css">
+    <style>
+        nav#menu{
+            display: block;
+        }
+
+        div#divBotao {
+            height: auto;
+            list-style: none;
+            text-transform: uppercase;
+            position: relative;
+            top: -80px;
+            left: 320px;
+        }
+     
+        button {
+            font-size: 1.2em;
+            background-color:#dddddd;
+            border: 0;
+            margin-bottom: 1em;
+            padding: 0.2em 0.6em;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0,0.2);  
+            position: relative;
+            margin-bottom: 0px;
+            top: 97%;
+            left: 42%;
+            margin-right: -50%;
+        }
+
+        .botaoCadastro:hover{
+            background-color: #606060;
+            box-shadow: inset 2px 2px 2px rgba(0, 0, 0,0.2);
+            text-shadow: none;
+        }
+
+    </style>
 </head>
 <body>
     <div id="interface">
@@ -17,19 +52,19 @@
                     <li><a href="pagMain.html">Página principal</a> </li> 
                     <li><a href="produtos.html">Produtos</a></li> 
                     <li><a href="sobre_nos.html">Sobre nós</a></li>
-                    <li><a href="perfil.html">Perfil</a></li>
+                    <!-- <li><a href="perfil.html">Perfil</a></li> -->
+                    <li><a href="login.html">Perfil</a></li>
                 </ul>
             </nav>
         </header>
-        <h2>Destaques</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat suscipit fuga provident corrupti! Voluptatem, illo et odio ex ducimus vitae quisquam delectus? Itaque neque distinctio veniam aspernatur dolor dignissimos excepturi?       
-        </p>
-        <section>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia maiores rerum, consequuntur perspiciatis dolores ratione nihil voluptas, expedita corporis hic reprehenderit dolor? Quas eligendi incidunt molestiae consequuntur laboriosam. Modi, tempore?</p>
-        </section>
+        <h2>Produtos</h2>
+        <div id="divBotao">
+            <a href="cadastroProduto.html"><button class="botaoCadastro" >Cadastrar Produtos</button></a>
+        
         <footer id = "rodape"> <!--É o rodapé da página, onde fica as informações-->
             &copy; Copyright 2021 - by <a href="https://github.com/Gustavo-caetano">Gustavo Caetano</a>  e <a href="https://github.com/Valmir-Cunha">Valmir Cunha</a> 
         </footer>
     </div>
+    
 </body>
 </html>

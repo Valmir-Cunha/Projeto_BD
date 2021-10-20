@@ -1,0 +1,59 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap'); /*Improtação de uma font do google fonts*/ /*Para usar ela: font-family: 'Titillium Web', sans-serif;*/
+
+fieldset { /*Retitando a borda do formulário*/
+    border: 0;
+    padding-bottom: 2px;
+}
+
+input,textarea,button { /*Arredondamento dos campos*/
+    border-radius: 5px;
+}
+
+div.campo {
+    margin-bottom: 0.7em;
+}
+
+div.campo label{
+    margin-bottom: 0.1em;
+    display: block;
+}
+
+.campo input[type = "text"], .campo input[type = "number"], .campo textarea{
+    padding: 0.2em;
+    border: 1px solid;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0,0.2);
+    display: block;
+    height: 20px; 
+}
+
+.campo textarea{
+    height: 50px;
+}
+
+.campo input:focus, .campo textarea:focus{ /*Destaca o campo que está em foco*/
+    background-color: #e0e0f8;
+}
+
+div#divBotao  .botao {
+    display: inline-block;
+    font-size: 1.2em;
+    background: #666666;
+    border: 0;
+    margin-bottom: 1em;
+    color: #ffffff;
+    padding: 0.2em 0.6em;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0,0.2);  
+    text-shadow: 1px 1px 1px rgba(0, 0, 0,0.5);
+    position: relative;
+    /* margin-bottom: 0px;
+    top: 97%;
+    left: 42%;
+    margin-right: -50%; */
+}
+
+div#divBotao  .botao:hover{
+    background-color: #606060;
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0,0.2);
+    text-shadow: none;
+}

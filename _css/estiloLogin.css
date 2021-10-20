@@ -6,7 +6,8 @@
 body{
     background-repeat: no-repeat;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    background-image: linear-gradient(to bottom,cyan,yellow);
+    background-color: #dddddd;
+    /* background-image: linear-gradient(to bottom,cyan,yellow); */
  }
 
 div#frame{
@@ -36,24 +37,39 @@ div#frame a{
     font-weight: bold;
 }
 
+div#frame .campo{
+    margin: 15px;
+    padding: 5px;
+}
+
 input{
+    border-radius: 5px;
     padding: 10px;
     border:none;
     outline:none;
     font-size: 20px;
+    width: 100%;
+}
+
+.campo input:focus { /*Destaca o campo que está em foco*/
+    background-color: #e0e0f8;
 }
 
 button{
-    background-color: dodgerblue;
+    background: #666666;
     border:none;
     padding: 15px;
     width: 100%;
     border-radius: 10px;
     color: white;
     cursor: pointer;
+    margin-right: 10px;
+    font-size: 12pt;
 }
 
 button:hover{
-    background-color: deepskyblue;
+    background-color: #606060;
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0,0.2);
+    text-shadow: none;
 }
 
