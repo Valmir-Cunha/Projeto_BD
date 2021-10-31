@@ -12,13 +12,13 @@ body{
 
 div#frame{
     display: block;
-    height: auto;
+    height:fit-content;
     background-color: rgba(0,0,0,0.8);
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    padding: 50px;
+    padding: 40px;
     border-radius: 15px;
     color: seashell;
 }
@@ -39,7 +39,7 @@ div#frame a{
 
 div#frame .campo{
     margin: 15px;
-    padding: 5px;
+   
 }
 
 input{
@@ -50,7 +50,6 @@ input{
     font-size: 20px;
     width: 100%;
 }
-
 .campo input:focus { /*Destaca o campo que está em foco*/
     background-color: #e0e0f8;
 }
@@ -60,7 +59,7 @@ button{
     border:none;
     padding: 15px;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 20px;
     color: white;
     cursor: pointer;
     margin-right: 10px;

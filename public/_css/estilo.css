@@ -9,7 +9,7 @@ body{
     background-color: #dddddd;
     color: rgba(0, 0, 0, 1);
     /* background-repeat: no-repeat; */
-    /* background-image: linear-gradient(to bottom,cyan,yellow); */
+     /*background-image: linear-gradient(to bottom,cyan,yellow);*/
     
 }
 
@@ -40,7 +40,7 @@ div#interface h2#centro{
 header#cabecalho{
     border-bottom: 1px #000000 solid;
     height: 130px;
-    background: url("../_imagens/comercialDantaslogo.png") no-repeat 0px 10px;
+    background: url("/_imagens/comercialDantaslogo.png") no-repeat 0px 10px;
 }
 
 /* header#cabecalho h2{
@@ -57,13 +57,16 @@ p{
 nav#menu{
     display: block;
 }
+.mt-n1 {
+    margin-top: -0.25rem !important;
+  }
 
 nav#menu ul{
     height: auto;
     list-style: none;
     text-transform: uppercase;
     position: relative;
-    top: -20px;
+    top: 10%;
     left: 42%;
 }
 
