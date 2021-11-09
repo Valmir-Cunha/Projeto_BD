@@ -1,28 +1,17 @@
-const express=require("express");
-const app=express();
-const path=require("path");
+///////////////////////////////////////////
+//Arquivo de configuração do back-end ////
+//////////////////////////////////////////
 
-app.set("view engine",'ejs');
-app.use(express.static("public"));
+const back=require("./rotas")
 
-app.get("/",(req,res)=>{
-    res.render("pagMain");
-});
-app.get("/login.html",(req,res)=>{
-    res.sendFile(path.join(__dirname + '/views/login.html'))
-});
-app.get("/cadrastoUsuario.html",(req,res)=>{
-    res.sendFile(path.join(__dirname + '/views/cadrastoUsuario.html'))
-});
-app.get("/produtos.html",(req,res)=>{
-    res.sendFile(path.join(__dirname + '/views/produtos.html'))
-});
-app.get("/produtoView.html",(req,res)=>{
-    res.sendFile(path.join(__dirname + '/views/produtoView.html'))
-});
-app.get("/sobre_nos.html",(req,res)=>{
-    res.sendFile(path.join(__dirname + '/views/sobre_nos.html'))
-});
+//configuração do ejs
+back.Set();
+//arquivos estaticos
+back.Static();
+//rotas para recebimento de dados
+back.Date();
+//definindo rotas e ligando o servidor
+back.conect();
 
 
-app.listen(4000,()=>{console.log("ta pegando");});
+
