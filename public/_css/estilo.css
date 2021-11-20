@@ -14,7 +14,7 @@ body{
 }
 
 div#interface{
-    height: auto;
+    height:auto;
     width: 900px;
     background-color: white;
     margin: -20px auto 0px auto;

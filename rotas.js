@@ -2,17 +2,17 @@ const express=require("express");//exportação da biblioteca express
 const app=express();
 const path=require("path");
 const bodyparse=require("body-parser");
-const connection=require("./database/funcoes");//conexão com banco de dados
+const connection=require("./database/Usuario/usuario");//conexão com banco de dados
 
 module.exports={
     //definição de rotas e ligação do servidor
     conect(){
         
         app.get("/",(req,res)=>{
-            res.render("pagMain");
+            res.render("../views/pagMain");
         });
         app.get("/login.ejs",(req,res)=>{
-            res.render("login");
+            res.render("../views/login");
         });
         app.get("/cadrastoUsuario.html",(req,res)=>{
             res.sendFile(path.join(__dirname + '/views/cadrastoUsuario.html'))
@@ -36,12 +36,30 @@ module.exports={
             var email=req.body.email;
             var senha=req.body.senha;
             var nome=req.body.nome;
-            connection.insersion(nome,email,senha);
+            connection.create({
+                nome:nome,
+                senha:senha,
+                email:email
+            }).then(()=>{
+                res.redirect("/");
+            }
+            )
         })
         app.post("/logim",(req,res)=>{
             var email=req.body.email;
             var senha=req.body.senha;
-            console.log(email);
+            connection.findOne({
+                where:{
+                    email: email,
+                    senha: senha
+                }
+            }).then((connection)=>{
+                if(connection!=undefined){
+                    res.redirect("/");
+                }else{
+                    res.render("login");
+                }
+            })
         })
     },
     //definição de arquivos estaticos e recebimento de dados
