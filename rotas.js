@@ -27,7 +27,7 @@ module.exports={
             res.sendFile(path.join(__dirname + '/views/sobre_nos.html'))
         });
 
-        app.listen(4000,()=>{console.log("ta pegando");});//onde o servidor é ligado
+        app.listen(process.env.PORT || 4000,()=>{console.log("ta pegando");});//onde o servidor é ligado
     },
     //recebimento de dados
     Date(){
