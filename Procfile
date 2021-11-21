@@ -1,1 +1,1 @@
-web: yarn test
+web: test
