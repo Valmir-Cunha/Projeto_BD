@@ -1,0 +1,19 @@
+      {
+  "name": "projeto_bd",
+  "version": "1.0.0",
+  "description": "projeto banco de dados",
+  "main": "back.js",
+  "scripts": {
+    "test": "node back.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Valmir-Cunha/Projeto_BD.git"
+  },
+  "author": "Gustavo Caetano Santos,Valmir Vinicius da cunha Rezende",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Valmir-Cunha/Projeto_BD/issues"
+  },
+  "homepage": "https://github.com/Valmir-Cunha/Projeto_BD#readme"
+}
