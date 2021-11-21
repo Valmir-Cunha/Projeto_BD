@@ -5,7 +5,6 @@
   "main": "back.js",
   "scripts": {
     "start":"node back.js"
-    "test": "node back.js"
   },
   "repository": {
     "type": "git",
