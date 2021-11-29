@@ -7,7 +7,9 @@
     <title>Página principal</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="/_css/estilo.css">
+    <link rel="stylesheet" href="_css/estiloCatalogo.css">
     <script lang="javascript" src="funcoes.js"></script>
+  
 </head>
 <body>
     <div class="container-fluid">
@@ -17,14 +19,39 @@
                 <ul>
                     <h1>Página inicial</h1>
                     <li><a href="/">Página principal</a> </li> 
-                    <li><a href="produtos.html">Produtos</a></li> 
-                    <li><a href="sobre_nos.html">Sobre nós</a></li>
+                    <li><a href="produtos.ejs">Produtos</a></li> 
+                    <li><a href="sobre_nos.ejs">Sobre nós</a></li>
                     <li><a href="login.ejs">Perfil</a></li>
+                    
                 </ul>
-            </nav>
+ 
+           </nav>
         </header>
         <h2>Destaques</h2>
         <p>
+            <%tabel.forEach(function(tabels){%>
+                <section class="catalogo" id="catalogo">
+                    <div class="conteudo">
+                        <div class="tituloCatalogo">
+                            <h2>Produtos</h2>
+                        </div>
+                        <div class="cardsProdutos">
+                            <div class="cardItem">
+                                <img src="/uploads/<%=tabels.image%>" width="100px" height="80px" alt="Imagem Produto">
+                            </div>
+                            <div class="conteudoCard">
+                                <h4><%=tabels.name%></h4>
+                                <p><%=tabels.des%></p>
+                                <a href="produtoView.html"> <button class="botaoVisualizar" type="button">Visualizar</button></a>
+                            </div>
+                        </div>
+        
+                    </div> 
+                    
+                </section>
+                <br>
+            <%})%>
+            <br>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat suscipit fuga provident corrupti! Voluptatem, illo et odio ex ducimus vitae quisquam delectçho
         </p> 
         <footer id = "rodape"> <!--É o rodapé da página, onde fica as informações-->

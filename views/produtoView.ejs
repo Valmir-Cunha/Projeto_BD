@@ -4,76 +4,79 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro produtos</title>
+    <title>Produto</title>
     <link rel="stylesheet" href="_css/estilo.css">
     <link rel="stylesheet" href="_css/estiloCadastroProdutos.css">
-    <script lang="javascript" src="funcoes.js"></script>
+    <style>
+        label {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <div id="interface">
         <header id = "cabecalho">
+            <!-- <h1>Loja do Fulano</h1> -->
             <nav id="menu" > <!-- Determina um menu de navegação, tudo que estiver dentro dessa tag será considerada parte do menu -->
                 <ul>
                     <h1>Página inicial</h1>
-                    <li><a href="pagMain.html">Página principal</a> </li> 
-                    <li><a href="produtos.html">Produtos</a></li> 
-                    <li><a href="sobre_nos.html">Sobre nós</a></li>
-                    <li><a href="login.html">Perfil</a></li>
+                    <li><a href="/">Página principal</a> </li> 
+                    <li><a href="produtos.ejs">Produtos</a></li> 
+                    <li><a href="sobre_nos.ejs">Sobre nós</a></li>
+                    <li><a href="login.ejs">Perfil</a></li>
                 </ul>
             </nav>
         </header>
-        <h2 id = "centro">Cadastro produtos</h2>
-        <div id="interface cadastro">
-            <p>Preencha todos os campos para realizar o cadastro do produto!</p>
-        </div>
-    
-        <form action=""> <!--Define a área de um formulário-->
+        <div>
             <fieldset class="grupo"> <!--Pesquise-->
+                <div class="campo">
+                    <label for="imagemProduto">Imagem:</label> <!--o "for" referencia para onde esse label se refere-->
+                    <img src="_imagens/Furadeira-de-Impacto-12-Pol-13mm-500W-11-schulz-plus1.jpeg" alt=""<h2>teste</h2>
+                    <br>
+                </div>
                 <div class="campo">
                     <label for="idProduto">Código:</label> <!--o "for" referencia para onde esse label se refere-->
                     <br>
-                    <input type="number" name="id" id="idProduto" required> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
+                    <input type="number" name="id" id="idProduto" readonly placeholder="1"> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
                 </div>
-                <div class="campo">
-                    <label for="imagemProduto">Imagem:</label> <!--o "for" referencia para onde esse label se refere-->
-                    <br>
-                    <input type="file" name="imagem" id="imagemProduto" > <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
-                </div>
+
                 <div class="campo">
                     <label for="nomeProduto">Nome do produto:</label>
                     <br>
-                    <input type="text" name="nome" id="nomeProduto" required> 
+                    <input type="text" name="nome" id="nomeProduto" readonly placeholder="Furadeira"> 
                 </div>
     
                 <div class="campo">
                     <label for="marcaProduto">Marca:</label>
                     <br>
-                    <input type="text" name="marca" id="marcaProduto" required>
+                    <input type="text" name="marca" id="marcaProduto" readonly placeholder="Still">
                 </div>
     
                 <div class="campo">
                     <label for="categoriaProduto">Categoria:</label>
                     <br>
-                    <input type="text" name="categoria" id="categoriaProduto" required>
+                    <input type="text" name="categoria" id="categoriaProduto" readonly placeholder="Ferramentas">
                 </div>
 
                 <div class="campo">
                     <label for="quantidadeProduto">Quantidade:</label>
                     <br>
-                    <input type="number" name="quantidade" id="quantidadeProduto" required>
+                    <input type="number" name="quantidade" id="quantidadeProduto" readonly placeholder="2"> 
                 </div>
                 <div class="campo">
                     <label for="">Descrição do produto:</label>
                     <br>
-                    <textarea name="descricao" id="areaDescricao" cols="30" rows="10"></textarea>
+                    <textarea name="descricao" id="areaDescricao" cols="30" rows="10" readonly>Ferramenta utilizada para perfuração de supérfícies</textarea>
                 </div>
                 
                 <div id="divBotao">
-                    <button type="submit" class="botao" style=" margin-bottom: 0px; margin-left: 37%; margin-right: 20px;">Cadastrar</button>
+                    <button type="submit" class="botao" style=" margin-bottom: 0px; margin-left: 37%; margin-right: 20px;">Adicionar ao carrinho</button>
                     <a href="produtos.html"><button class="botao" type="button">Voltar</button></a> 
                 </div>
             </fieldset>
-        </form>
+        </div>
         <footer id = "rodape"> <!--É o rodapé da página, onde fica as informações-->
             &copy; Copyright 2021 - by <a href="https://github.com/Gustavo-caetano">Gustavo Caetano</a>  e <a href="https://github.com/Valmir-Cunha">Valmir Cunha</a> 
         </footer>

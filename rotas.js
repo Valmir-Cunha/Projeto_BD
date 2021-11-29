@@ -3,28 +3,43 @@ const app=express();
 const path=require("path");
 const bodyparse=require("body-parser");
 const connection=require("./database/Usuario/usuario");//conexão com banco de dados
+const image=require("./database/database/teste");
+const multer=require("multer");
+const upload=multer({dest:"public/uploads/"});
+//const fs=require("fs");
+//global.appRoot = __dirname;
 
 module.exports={
     //definição de rotas e ligação do servidor
     conect(){
         
         app.get("/",(req,res)=>{
-            res.render("../views/pagMain");
+            image.findAll({raw:true}).then(tabela=>{
+                res.render("../views/pagMain",{
+                    tabel:tabela
+                });
+            });
         });
         app.get("/login.ejs",(req,res)=>{
             res.render("../views/login");
         });
-        app.get("/cadrastoUsuario.html",(req,res)=>{
-            res.sendFile(path.join(__dirname + '/views/cadrastoUsuario.html'))
+        app.get("/cadrastoUsuario.ejs",(req,res)=>{
+            res.render("../views/cadrastoUsuario");
         });
-        app.get("/produtos.html",(req,res)=>{
-            res.sendFile(path.join(__dirname + '/views/produtos.html'))
+        app.get("/produtos.ejs",(req,res)=>{
+            res.render("../views/produtos");
         });
-        app.get("/produtoView.html",(req,res)=>{
-            res.sendFile(path.join(__dirname + '/views/produtoView.html'))
+        app.get("/produtoView.ejs",(req,res)=>{
+            res.render("../views/produtoView");
         });
-        app.get("/sobre_nos.html",(req,res)=>{
-            res.sendFile(path.join(__dirname + '/views/sobre_nos.html'))
+        app.get("/sobre_nos.ejs",(req,res)=>{
+            res.render("../views/sobre_nos");
+        });
+        app.get("/cadastroProduto.ejs",(req,res)=>{
+            res.render("../views/cadastroProduto");
+        });
+        app.get("/perfil.ejs",(req,res)=>{
+            res.render("../views/perfil");
         });
 
         app.listen(4000,()=>{console.log("ta pegando");});//onde o servidor é ligado
@@ -61,7 +76,27 @@ module.exports={
                 }
             })
         })
-    },
+        app.post("/produto",upload.single('imagem'),(req,res)=>{
+            const {filename,size}=req.file;
+
+            image.create({
+                name:req.body.nome,
+                image:filename,
+                marca:req.body.marca,
+                categoria:req.body.categoria,
+                quantidade:req.body.quantidade,
+                des:req.body.descricao
+            }).then(err=>{
+                console.log(err);
+                image.findAll({raw:true}).then(tabela=>{
+                    res.render("../views/pagMain",{
+                        tabel:tabela
+                    });
+                });
+            })
+
+        })
+    }, 
     //definição de arquivos estaticos e recebimento de dados
     Static(){
         //estaticos
