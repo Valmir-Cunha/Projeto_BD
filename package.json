@@ -1,10 +1,16 @@
- {
+      {
   "name": "projeto_bd",
   "version": "1.0.0",
   "description": "projeto banco de dados",
   "main": "back.js",
   "scripts": {
-    "test": "node back.js"
+    "start":"node back.js"
+  },
+  "dependencies": {
+    "express":"^4.17.1",
+    "sequelize":"^6.12.0-alpha.1",
+    "pg":"^8.7.1",
+    "ejs":"^3.1.6"
   },
   "repository": {
     "type": "git",
