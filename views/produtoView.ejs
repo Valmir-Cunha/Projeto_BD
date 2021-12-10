@@ -33,48 +33,52 @@
             <fieldset class="grupo"> <!--Pesquise-->
                 <div class="campo">
                     <label for="imagemProduto">Imagem:</label> <!--o "for" referencia para onde esse label se refere-->
-                    <img src="_imagens/Furadeira-de-Impacto-12-Pol-13mm-500W-11-schulz-plus1.jpeg" alt=""<h2>teste</h2>
+                    <img src="/uploads/<%=tabels.image%>"width="200px" height="100px" alt="Imagem Produto">
                     <br>
                 </div>
                 <div class="campo">
                     <label for="idProduto">Código:</label> <!--o "for" referencia para onde esse label se refere-->
                     <br>
-                    <input type="number" name="id" id="idProduto" readonly placeholder="1"> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
+                    <input type="number" name="id" id="idProduto" readonly placeholder="<%=tabels.id%>"> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
                 </div>
 
                 <div class="campo">
                     <label for="nomeProduto">Nome do produto:</label>
                     <br>
-                    <input type="text" name="nome" id="nomeProduto" readonly placeholder="Furadeira"> 
+                    <input type="text" name="nome" id="nomeProduto" readonly placeholder="<%=tabels.name%>"> 
                 </div>
     
                 <div class="campo">
                     <label for="marcaProduto">Marca:</label>
                     <br>
-                    <input type="text" name="marca" id="marcaProduto" readonly placeholder="Still">
+                    <input type="text" name="marca" id="marcaProduto" readonly placeholder="<%=tabels.marca%>">
                 </div>
     
                 <div class="campo">
                     <label for="categoriaProduto">Categoria:</label>
                     <br>
-                    <input type="text" name="categoria" id="categoriaProduto" readonly placeholder="Ferramentas">
+                    <input type="text" name="categoria" id="categoriaProduto" readonly placeholder="<%=tabels.categoria%>">
                 </div>
 
                 <div class="campo">
                     <label for="quantidadeProduto">Quantidade:</label>
                     <br>
-                    <input type="number" name="quantidade" id="quantidadeProduto" readonly placeholder="2"> 
+                    <input type="number" name="quantidade" id="quantidadeProduto" readonly placeholder="<%=tabels.quantidade%>"> 
                 </div>
                 <div class="campo">
                     <label for="">Descrição do produto:</label>
                     <br>
-                    <textarea name="descricao" id="areaDescricao" cols="30" rows="10" readonly>Ferramenta utilizada para perfuração de supérfícies</textarea>
+                    <textarea name="descricao" id="areaDescricao" cols="30" rows="10" readonly><%=tabels.des%></textarea>
                 </div>
                 
+                <form action="\excluir" method="post">
                 <div id="divBotao">
                     <button type="submit" class="botao" style=" margin-bottom: 0px; margin-left: 37%; margin-right: 20px;">Adicionar ao carrinho</button>
-                    <a href="produtos.html"><button class="botao" type="button">Voltar</button></a> 
+                    <input type="hidden" value="<%=tabels.image%>" name="imagem">
+                    <button type="submit" name="apagar" class="botao" value="<%=tabels.id%>">Apagar</button>
+                    <a href="/"><button class="botao" type="button">Voltar</button></a> 
                 </div>
+            </form>
             </fieldset>
         </div>
         <footer id = "rodape"> <!--É o rodapé da página, onde fica as informações-->

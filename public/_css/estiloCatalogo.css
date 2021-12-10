@@ -92,6 +92,20 @@
   margin-bottom: 10px;
   margin-left: -5%;
 }
+.cardsProdutos input {
+  width: 110%;
+  padding: 10px 0px;
+  border: none;
+  background: gray;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-bottom: 10px;
+  margin-left: -5%;
+}
 
 .cardsProdutos button:hover {
   background: black;

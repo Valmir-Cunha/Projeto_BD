@@ -5,15 +5,15 @@ const bodyparse=require("body-parser");
 const connection=require("./database/Usuario/usuario");//conexão com banco de dados
 const image=require("./database/database/teste");
 const multer=require("multer");
+const req = require("express/lib/request");
 const upload=multer({dest:"public/uploads/"});
-//const fs=require("fs");
-//global.appRoot = __dirname;
+const fs=require("fs");
 
 module.exports={
     //definição de rotas e ligação do servidor
     conect(){
         
-        app.get("/",(req,res)=>{
+       app.get("/",(req,res)=>{
             image.findAll({raw:true}).then(tabela=>{
                 res.render("../views/pagMain",{
                     tabel:tabela
@@ -86,9 +86,8 @@ module.exports={
                 categoria:req.body.categoria,
                 quantidade:req.body.quantidade,
                 des:req.body.descricao
-            }).then(err=>{
-                console.log(err);
-                image.findAll({raw:true}).then(tabela=>{
+            }).then(()=>{
+                image.findAll().then(tabela=>{
                     res.render("../views/pagMain",{
                         tabel:tabela
                     });
@@ -96,6 +95,35 @@ module.exports={
             })
 
         })
+        app.post("/produtopag",(req,res)=>{
+            let Id=req.body.send;
+            image.findOne({
+                where:{
+                    id:Id
+                }
+            }).then(tabel=>{
+                res.render("../views/produtoView",{
+                    tabels:tabel
+                });
+            });
+        });
+        app.post("/excluir",(req,res)=>{
+            let mod=req.body.apagar;
+            let nome=req.body.imagem;
+
+            fs.unlink('./public/uploads/'+nome);
+            image.destroy({
+                where:{
+                    id:mod
+                }
+            }).then(()=>{
+                image.findAll({raw:true}).then(tabela=>{
+                    res.render("../views/pagMain",{
+                        tabel:tabela
+                    });
+            })
+        })
+        });
     }, 
     //definição de arquivos estaticos e recebimento de dados
     Static(){
