@@ -114,7 +114,7 @@ module.exports={
             let mod=req.body.apagar;
             let nome=req.body.imagem;
             console.log(nome);
-            fs.unlink('./public/uploads/'+nome);
+            //fs.unlink('./public/uploads/'+nome);
             image.destroy({
                 where:{
                     id:mod
