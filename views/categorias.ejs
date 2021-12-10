@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="_css/estilo.css">
-    <link rel="stylesheet" href="_css/estiloCatalogo.css">
+    <link rel="stylesheet" href="_css/estiloCatalogoCategorias.css">
     <style>
         nav#menu{
             display: block;
@@ -17,10 +17,11 @@
             list-style: none;
             text-transform: uppercase;
             position: relative;
+            border-radius: 5px;
             left: 35%;
         }
      
-        button.botaoCadastro {
+        button.botaoCadastroCategoria {
             font-size: 1.2em;
             background-color:#dddddd;
             border: 0;
@@ -35,7 +36,7 @@
             margin-right: -50%;
         }
 
-        .botaoCadastro:hover{
+        .botaoCadastroCategoria:hover{
             background-color: #606060;
             box-shadow: inset 2px 2px 2px rgba(0, 0, 0,0.2);
             text-shadow: none;
@@ -51,23 +52,19 @@
                 <ul>
                     <h1>Página inicial</h1>
                     <li><a href="/">Página principal</a> </li> 
-                    <li><a href="produtos.ejs">Produtos</a></li> 
+                    <li><a href="categorias.ejs">Categorias</a></li>  
                     <li><a href="sobre_nos.ejs">Sobre nós</a></li>
                     <li><a href="login.ejs">Perfil</a></li>
                 </ul>
             </nav>
         </header>
         <div id="divBotao">
-            <a href="cadastroProduto.ejs"><button class="botaoCadastro" >Cadastrar Produtos</button></a>
+            <a href="cadastroCategoria.ejs"><button class="botaoCadastroCategoria" >Cadastrar Categoria</button></a>
         </div>
-        <section class="catalogo" id="catalogo">
+        <!-- <section class="catalogo" id="catalogo">
             <div class="conteudo">
                 <div class="tituloCatalogo">
-                    <h2>Produtos</h2>
-                </div>
-                <div class="filtro">
-                    <input type="text" class="buscarInput" placeholder="Digite o nome do produto">
-                    <button class="buscarProduto">Buscar</button>
+                    <h2>Categorias</h2>
                 </div>
                 <div class="cardsProdutos">
                     <div class="cardItem">
@@ -80,11 +77,24 @@
                     </div>
                 </div>
             </div>
+            <br>
+        </section> -->
+        <h2>Categorias</h2>
+        <section class="catalogo" id="catalogo">
+                <div class="cardsCategoria">
+                    <div class="conteudoCard">
+                        <h4>Categoria 1</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <!-- <form method="post" action="/produtopag"> -->
+                        <!-- </form> -->
+                        <a href="produtoView.ejs"> <button class="botaoVisualizar" type="button">Visualizar</button></a>
+                    </div>
+                </div>
+            <br>
         </section>
         <footer id = "rodape"> <!--É o rodapé da página, onde fica as informações-->
             &copy; Copyright 2021 - by <a href="https://github.com/Gustavo-caetano">Gustavo Caetano</a>  e <a href="https://github.com/Valmir-Cunha">Valmir Cunha</a> 
         </footer>
     </div>
-    
 </body>
 </html>

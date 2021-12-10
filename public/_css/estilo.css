@@ -38,12 +38,11 @@ header#cabecalho{
     background: url("/_imagens/comercialDantaslogo.png") no-repeat 0px 10px;
 }
 
-/* header#cabecalho h2{
+header#cabecalho h2{
     font-family: 'Titillium Web', sans-serif;
     font-size: 20pt;
     color: #000000;
-} */
-
+}
 
 p{
     text-align: justify;
@@ -52,17 +51,18 @@ p{
 nav#menu{
     display: block;
 }
-.mt-n1 {
+
+/* .mt-n1 {
     margin-top: -0.25rem !important;
-  }
+} */
 
 nav#menu ul{
     height: auto;
     list-style: none;
     text-transform: uppercase;
     position: relative;
-    top: 10%;
-    left: 42%;
+    top: -10%;
+    left: 40%;
 }
 
 nav#menu li{

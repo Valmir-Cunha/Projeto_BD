@@ -26,8 +26,8 @@ module.exports={
         app.get("/cadrastoUsuario.ejs",(req,res)=>{
             res.render("../views/cadrastoUsuario");
         });
-        app.get("/produtos.ejs",(req,res)=>{
-            res.render("../views/produtos");
+        app.get("/categorias.ejs",(req,res)=>{
+            res.render("../views/categorias");
         });
         app.get("/produtoView.ejs",(req,res)=>{
             res.render("../views/produtoView");
@@ -37,6 +37,9 @@ module.exports={
         });
         app.get("/cadastroProduto.ejs",(req,res)=>{
             res.render("../views/cadastroProduto");
+        });
+        app.get("/cadastroCategoria.ejs",(req,res)=>{
+            res.render("../views/cadastroCategoria");
         });
         app.get("/perfil.ejs",(req,res)=>{
             res.render("../views/perfil");

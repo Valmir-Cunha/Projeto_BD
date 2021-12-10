@@ -12,39 +12,6 @@
   flex: 1 1 150px;
 }
 
-/* img{
-  max-width: 100%;
-  display: block;
-} */
-/* 
-.filtro {
-    width: 112%;
-    height: 50px;
-    background: #dddddd;
-    border-radius: 8px; 
-    display: flex;
-    margin-bottom: 30px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 5px
-}
-
-.buscarInput{
-    width: 700px;
-    height: 30px;
-    text-indent: 10px;
-    margin-left: 10px;
-} */
-
-/* .buscarProduto{
-    width: 150px;
-    height: 35px;
-    padding: 5px;
-    margin: 10px;
-    cursor: pointer;
-} */
-
 .cardsProdutos {
   max-width: 200px;
   background: #dddddd;
