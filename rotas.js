@@ -113,7 +113,7 @@ module.exports={
         app.post("/excluir",(req,res)=>{
             let mod=req.body.apagar;
             let nome=req.body.imagem;
-
+            console.log(nome);
             fs.unlink('./public/uploads/'+nome);
             image.destroy({
                 where:{
