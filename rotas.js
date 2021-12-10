@@ -133,7 +133,7 @@ module.exports={
         //estaticos
         app.use(express.static("public"));
 
-        recebimento de dados
+       // recebimento de dados
         app.use(bodyparse.urlencoded({extended:false}));
         app.use(bodyparse.json());
     },
