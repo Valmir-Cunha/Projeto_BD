@@ -106,7 +106,7 @@ module.exports={
                 }
             }).then(tabel=>{
                 res.render("../views/produtoView",{
-                    tabel:tabel
+                    tabels:tabel
                 });
             });
         });
