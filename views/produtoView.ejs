@@ -4,93 +4,87 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página principal</title>
-    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <title>Produto</title>
     <link rel="stylesheet" href="_css/estilo.css">
-    <link rel="stylesheet" href="_css/estiloCatalogoProdutos.css"> 
+    <link rel="stylesheet" href="_css/estiloCadastroProdutos.css">
     <style>
-        nav#menu{
-            display: block;
+        label {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            font-weight: bold;
         }
-
-        div#divBotao {
-            height: auto;
-            list-style: none;
-            text-transform: uppercase;
-            position: relative;
-            left: 37%;
-            border-radius: 5px;
-        }
-     
-        button.botaoCadastro {
-            font-size: 1.2em;
-            background-color:#dddddd;
-            border: 0;
-            margin-top: 0.2em;
-            padding: 0.2em 0.6em;
-            box-shadow: 2px 2px 2px rgba(0, 0, 0,0.2);  
-            position: relative;
-            cursor: pointer;
-            left: 42%;
-            margin-right: -50%;
-        }
-
-        img.image {
-           width: -webkit-fill-available;
-        }
-
-        .botaoCadastro:hover{
-            background-color: #606060;
-            box-shadow: inset 2px 2px 2px rgba(0, 0, 0,0.2);
-            text-shadow: none;
-        }
-
     </style>
-    <script lang="javascript" src="funcoes.js"></script>
-  
 </head>
 <body>
-    <div class="container-fluid">
-        <div id="interface">
-            <header id = "cabecalho">
-                <nav id="menu" > <!-- Determina um menu de navegação, tudo que estiver dentro dessa tag será considerada parte do menu -->
-                    <ul>
-                        <h1>Página inicial</h1>
-                        <li><a href="/">Página principal</a> </li> 
-                        <li><a href="categorias.ejs">Categorias</a></li>   
-                        <li><a href="sobre_nos.ejs">Sobre nós</a></li>
-                        <li><a href="login.ejs">Perfil</a></li>
-                    </ul>
+    <div id="interface">
+        <header id = "cabecalho">
+            <!-- <h1>Loja do Fulano</h1> -->
+            <nav id="menu" > <!-- Determina um menu de navegação, tudo que estiver dentro dessa tag será considerada parte do menu -->
+                <ul>
+                    <h1>Página inicial</h1>
+                    <li><a href="/">Página principal</a> </li> 
+                    <li><a href="categorias.ejs">Categorias</a></li>  
+                    <li><a href="sobre_nos.ejs">Sobre nós</a></li>
+                    <li><a href="login.ejs">Perfil</a></li>
+                </ul>
             </nav>
-            <div id="divBotao">
-                <a href="cadastroProduto.ejs"><button class="botaoCadastro" >Cadastrar Produto</button></a>
-            </div>
-            </header>
-            <h2>Produtos</h2>
-            <section class="catalogo" id="catalogo">
-                <%tabel.forEach(function(tabels){%>
-                    <div class="cardsProdutos">
-                            <img src="/uploads/<%=tabels.image%>" class="image" alt="Imagem Produto">
-                        <div class="conteudoCard">
-                            <h4><%=tabels.name%></h4>
-                            <p><%=tabels.des%></p>
-                            <form method="post" action="/produtopag">
-                                <button type="submit" name="send" value="<%=tabels.id%>" >Visualizar</button>
-                            </form>
-                        </div>
-                    </div>
-                <%})%>
-                <br>
-            </section>
-            <footer id = "rodape"> <!--É o rodapé da página, onde fica as informações-->
-                &copy; Copyright 2021 - by <a href="https://github.com/Gustavo-caetano">Gustavo Caetano</a>  e <a href="https://github.com/Valmir-Cunha">Valmir Cunha</a> 
-            </footer>
+        </header>
+        <div>
+            <fieldset class="grupo"> <!--Pesquise-->
+                <div class="campo">
+                    <label for="imagemProduto">Imagem:</label> <!--o "for" referencia para onde esse label se refere-->
+                    <img src="/uploads/<%=tabels.image%>"width="200px" height="100px" alt="Imagem Produto">
+                    <br>
+                </div>
+                <div class="campo">
+                    <label for="idProduto">Código:</label> <!--o "for" referencia para onde esse label se refere-->
+                    <br>
+                    <input type="number" name="id" id="idProduto" readonly placeholder="<%=tabels.id%>"> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
+                </div>
+
+                <div class="campo">
+                    <label for="nomeProduto">Nome do produto:</label>
+                    <br>
+                    <input type="text" name="nome" id="nomeProduto" readonly placeholder="<%=tabels.name%>"> 
+                </div>
+    
+                <div class="campo">
+                    <label for="marcaProduto">Marca:</label>
+                    <br>
+                    <input type="text" name="marca" id="marcaProduto" readonly placeholder="<%=tabels.marca%>">
+                </div>
+    
+                <div class="campo">
+                    <label for="categoriaProduto">Categoria:</label>
+                    <br>
+                    <input type="text" name="categoria" id="categoriaProduto" readonly placeholder="<%=tabels.categoria%>">
+                </div>
+
+                <div class="campo">
+                    <label for="quantidadeProduto">Quantidade:</label>
+                    <br>
+                    <input type="number" name="quantidade" id="quantidadeProduto" readonly placeholder="<%=tabels.quantidade%>"> 
+                </div>
+                <div class="campo">
+                    <label for="">Descrição do produto:</label>
+                    <br>
+                    <textarea name="descricao" id="areaDescricao" cols="30" rows="10" readonly><%=tabels.des%></textarea>
+                </div>
+                
+                <form action="\excluir" method="post">
+                <div id="divBotao">
+                    <a href="/"><button class="botao" style=" margin-bottom: 0px; margin-left: 37%; margin-right: 20px;" type="button">Voltar</button></a> 
+                    <button type="submit" class="botao" style=" margin-bottom: 0px; margin-right: 20px;">Editar</button>
+                    <input type="hidden" value="<%=tabels.image%>" name="imagem">
+                    <button type="submit" name="apagar" class="botao" value="<%=tabels.id%>">Excluir</button>
+                    
+                </div>
+            </form>
+            </fieldset>
         </div>
-        <script>
-        </script>
+        <footer id = "rodape"> <!--É o rodapé da página, onde fica as informações-->
+            &copy; Copyright 2021 - by <a href="https://github.com/Gustavo-caetano">Gustavo Caetano</a>  e <a href="https://github.com/Valmir-Cunha">Valmir Cunha</a> 
+        </footer>
     </div>
 </body>
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script src="/js/bootstrap.min.js"></script>
 </html>
