@@ -8,8 +8,6 @@ const multer=require("multer");
 const req = require("express/lib/request");
 const upload=multer({dest:"public/uploads/"});
 const fss=require("fs");
-//const aws=require("aws-sdk");
-const multers3=require("multer-s3");
 const { call } = require("body-parser");
 
 const categoria=["Casa","Madeira","Banheiro","Tinta"];
