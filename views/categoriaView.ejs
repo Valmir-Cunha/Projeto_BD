@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro produto</title>
     <link rel="stylesheet" href="_css/estilo.css">
-    <link rel="stylesheet" href="_css/estiloCadastroProdutos.css">
+    <link rel="stylesheet" href="_css/estiloCadastroCategoria.css">
     <script lang="javascript" src="funcoes.js"></script>
 </head>
 <body>
@@ -27,51 +27,27 @@
             <p>Preencha todos os campos para realizar o cadastro do produto!</p>
         </div>
     
-        <form method="post"  action="/produto" enctype="multipart/form-data" >  <!--Define a área de um formulário-->
+        <form method="post"  action="/categoria" enctype="multipart/form-data" >  <!--Define a área de um formulário-->
             <fieldset class="grupo"> <!--Pesquise-->
                 <div class="campo">
-                    <label for="idProduto">Código:</label> <!--o "for" referencia para onde esse label se refere-->
+                    <label for="idCategoria">Código:</label> <!--o "for" referencia para onde esse label se refere-->
                     <br>
-                    <input type="number" name="id" id="idProduto" readonly> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
+                    <input type="number" name="id" id="idCategoria" readonly> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
                 </div>
                 <div class="campo">
-                    <label for="imagemProduto">Imagem:</label> <!--o "for" referencia para onde esse label se refere-->
+                    <label for="nomeCategoria">Nome da categoria:</label>
                     <br>
-                    <input type="file" name="imagem" id="imagemProduto" accept="image/*"> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
+                    <input type="text" name="nome" id="nomeCategoria" readonly> 
                 </div>
                 <div class="campo">
-                    <label for="nomeProduto">Nome do produto:</label>
-                    <br>
-                    <input type="text" name="nome" id="nomeProduto" readonly> 
-                </div>
-    
-                <div class="campo">
-                    <label for="marcaProduto">Marca:</label>
-                    <br>
-                    <input type="text" name="marca" id="marcaProduto" readonly>
-                </div>
-    
-                <div class="campo">
-                    <label for="categoriaProduto">Categoria:</label>
-                    <br>
-                    <input type="text" name="categoria" id="categoriaProduto" readonly>
-                </div>
-
-                <div class="campo">
-                    <label for="quantidadeProduto">Quantidade:</label>
-                    <br>
-                    <input type="number" name="quantidade" id="quantidadeProduto" readonly>
-                </div>
-                <div class="campo">
-                    <label for="">Descrição do produto:</label>
+                    <label for="">Descrição da categoria:</label>
                     <br>
                     <textarea name="descricao" id="areaDescricao" cols="30" rows="10" readonly></textarea>
                 </div>
-                
                 <div id="divBotao">
                     <button type="submit" class="botao" style=" margin-bottom: 0px; margin-left: 37%; margin-right: 20px;">Salvar</button>
                     <button type="submit" class="botao" style=" margin-bottom: 0px; margin-left: 37%; margin-right: 20px;">Excluir</button>
-                    <a href="produtos.html"><button class="botao" type="button">Voltar</button></a> 
+                    <a href="categorias.ejs"><button class="botao" type="button">Voltar</button></a> 
                 </div>
             </fieldset>
         </form>
