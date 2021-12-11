@@ -7,7 +7,12 @@ const image=require("./database/database/teste");
 const multer=require("multer");
 const req = require("express/lib/request");
 const upload=multer({dest:"public/uploads/"});
-const fs=require("fs");
+const fss=require("fs");
+//const aws=require("aws-sdk");
+const multers3=require("multer-s3");
+const { call } = require("body-parser");
+
+const categoria=["Casa","Madeira","Banheiro","Tinta"];
 
 module.exports={
     //definição de rotas e ligação do servidor
@@ -16,7 +21,7 @@ module.exports={
        app.get("/",(req,res)=>{
             image.findAll({raw:true}).then(tabela=>{
                 res.render("../views/pagMain",{
-                    tabel:tabela
+                    tabel:tabela,
                 });
             });
         });
@@ -26,8 +31,8 @@ module.exports={
         app.get("/cadrastoUsuario.ejs",(req,res)=>{
             res.render("../views/cadrastoUsuario");
         });
-        app.get("/categorias.ejs",(req,res)=>{
-            res.render("../views/categorias");
+        app.get("/produtos.ejs",(req,res)=>{
+            res.render("../views/produtos");
         });
         app.get("/produtoView.ejs",(req,res)=>{
             res.render("../views/produtoView");
@@ -36,13 +41,23 @@ module.exports={
             res.render("../views/sobre_nos");
         });
         app.get("/cadastroProduto.ejs",(req,res)=>{
-            res.render("../views/cadastroProduto");
+            res.render("../views/cadastroProduto",{
+                list:categoria
+            });
+        });
+        app.get("/perfil.ejs",(req,res)=>{
+            res.render("../views/perfil");
+        });
+        app.get("/categorias.ejs",(req,res)=>{
+            res.render("../views/categorias",{
+                list:categoria
+            });
         });
         app.get("/cadastroCategoria.ejs",(req,res)=>{
             res.render("../views/cadastroCategoria");
         });
-        app.get("/perfil.ejs",(req,res)=>{
-            res.render("../views/perfil");
+        app.get("/listacategorias.ejs",(req,res)=>{
+            res.render("../views/listacategorias");
         });
 
         app.listen(process.env.PORT || 4000,()=>{console.log("ta pegando");});//onde o servidor é ligado
@@ -113,27 +128,70 @@ module.exports={
         app.post("/excluir",(req,res)=>{
             let mod=req.body.apagar;
             let nome=req.body.imagem;
-            console.log(nome);
-            //fs.unlink('./public/uploads/'+nome);
-            image.destroy({
-                where:{
-                    id:mod
+            let tipo=req.body.edit;
+            let salvar=req.body.salvar;
+            let save=req.body.save;
+            //fss.unlink('./public/uploads/'+nome);
+            if(salvar=="salvar"){
+                
+                let valores={
+                name:req.body.nome,
+                marca:req.body.marca,
+                categoria:req.body.categoria,
+                quantidade:req.body.quantidade,
+                des:req.body.descricao
                 }
-            }).then(()=>{
-                image.findAll({raw:true}).then(tabela=>{
-                    res.render("../views/pagMain",{
-                        tabel:tabela
-                    });
-            })
-        })
+                image.update(valores,{where:{
+                    id:save
+                }}).then(()=>{
+                    image.findAll({raw:true}).then(tabela=>{
+                        res.render("../views/pagMain",{
+                            tabel:tabela
+                        });
+                })
+            });
+            }else{
+                if(mod){
+                    image.destroy({
+                        where:{
+                            id:mod
+                        }
+                    }).then(()=>{
+                        image.findAll({raw:true}).then(tabela=>{
+                            res.render("../views/pagMain",{
+                                tabel:tabela
+                            });
+                    })
+                })
+                }else{
+                    image.findAll({raw:true}).then(tabela=>{
+                        res.render("../views/pagMain",{
+                            tabel:tabela
+                        });
+                     })
+                }
+            
+        }
         });
+        app.post("/categorias",(req,res)=>{
+            let categ=req.body.categoria;
+            image.findAll({
+                where:{
+                    categoria:categ
+                }
+            }).then(tabela=>{
+                res.render("../views/listacategorias",{
+                    tabel:tabela
+                });
+            });
+        })
     }, 
     //definição de arquivos estaticos e recebimento de dados
     Static(){
         //estaticos
         app.use(express.static("public"));
 
-       // recebimento de dados
+        //recebimento de dados
         app.use(bodyparse.urlencoded({extended:false}));
         app.use(bodyparse.json());
     },

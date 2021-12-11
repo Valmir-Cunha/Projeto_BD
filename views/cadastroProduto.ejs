@@ -54,7 +54,11 @@
                 <div class="campo">
                     <label for="categoriaProduto">Categoria:</label>
                     <br>
-                    <input type="text" name="categoria" id="categoriaProduto" required>
+                    <select name="categoria">
+                        <%list.forEach(function(lists){%>
+                        <option value="<%=lists%>"><%=lists%></option>
+                        <%})%>
+                    </select>
                 </div>
 
                 <div class="campo">

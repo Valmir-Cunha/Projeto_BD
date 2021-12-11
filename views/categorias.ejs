@@ -61,37 +61,21 @@
         <div id="divBotao">
             <a href="cadastroCategoria.ejs"><button class="botaoCadastroCategoria" >Cadastrar Categoria</button></a>
         </div>
-        <!-- <section class="catalogo" id="catalogo">
-            <div class="conteudo">
-                <div class="tituloCatalogo">
-                    <h2>Categorias</h2>
-                </div>
-                <div class="cardsProdutos">
-                    <div class="cardItem">
-                        <img src="_imagens/Furadeira-de-Impacto-12-Pol-13mm-500W-11-schulz-plus1.jpeg" alt="Imagem Produto">
-                    </div>
-                    <div class="conteudoCard">
-                        <h4>Furadeira</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                        <a href="produtoView.ejs"> <button class="botaoVisualizar" type="button">Visualizar</button></a>
-                    </div>
-                </div>
-            </div>
-            <br>
-        </section> -->
         <h2>Categorias</h2>
+        <%list.forEach(function(lists){%>
         <section class="catalogo" id="catalogo">
                 <div class="cardsCategoria">
                     <div class="conteudoCard">
-                        <h4>Categoria 1</h4>
+                        <h4><%=lists%></h4>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        <!-- <form method="post" action="/produtopag"> -->
-                        <!-- </form> -->
-                        <a href="produtoView.ejs"> <button class="botaoVisualizar" type="button">Visualizar</button></a>
+                        <form method="post" action="/categorias">
+                        <button  class="botaoVisualizar" name="categoria" type="submit" value="<%=lists%>">Visualizar</button>
+                        </form>
                     </div>
                 </div>
             <br>
         </section>
+        <%})%>
         <footer id = "rodape"> <!--É o rodapé da página, onde fica as informações-->
             &copy; Copyright 2021 - by <a href="https://github.com/Gustavo-caetano">Gustavo Caetano</a>  e <a href="https://github.com/Valmir-Cunha">Valmir Cunha</a> 
         </footer>
