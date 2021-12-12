@@ -10,7 +10,6 @@ const imag = type.define('imagem',{
     image:Sequelize.STRING,
    name: Sequelize.STRING,
    marca: Sequelize.STRING,
-   categoria: Sequelize.STRING,
    quantidade:Sequelize.INTEGER,
    des:Sequelize.STRING
 }
