@@ -16,8 +16,8 @@ module.exports={
     //definição de rotas e ligação do servidor
     conect(){
         
-       app.get("/",(req,res)=>{
-            image.findAll({raw:true}).then(tabela=>{
+       app.get("/",async (req,res)=>{
+            await image.findAll({raw:true}).then(tabela=>{
                 res.render("../views/pagMain",{
                     tabel:tabela,
                 });
