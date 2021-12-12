@@ -21,9 +21,6 @@ module.exports={
                 res.render("../views/pagMain",{
                     tabel:tabela,
                 })
-                .catch(err=>{
-                    console.log(err);}
-                )
             });
         });
         app.get("/login.ejs",(req,res)=>{
