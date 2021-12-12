@@ -135,7 +135,6 @@ module.exports={
                 let valores={
                 name:req.body.nome,
                 marca:req.body.marca,
-                categoria:req.body.categoria,
                 quantidade:req.body.quantidade,
                 des:req.body.descricao
                 }
