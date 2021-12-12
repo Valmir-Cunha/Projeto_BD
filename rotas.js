@@ -22,7 +22,7 @@ module.exports={
                     tabel:tabela,
                 })
                 .catch(err=>{
-                    console.log(err);
+                    console.log(err);}
                 )
             });
         });
