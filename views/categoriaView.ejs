@@ -24,7 +24,7 @@
         </header>
         <h2 id = "centro">Categoria</h2>
         <div id="interface cadastro">
-            <p>Preencha todos os campos para realizar o cadastro do produto!</p>
+            <p>Preencha todos os campos para realizar o cadastro da categoria!</p>
         </div>
     
         <form method="post"  action="/editarcateg"  >  <!--Define a área de um formulário-->
@@ -44,16 +44,17 @@
                     <br>
                     <textarea name="descricao" id="areaDescricao" cols="30" rows="10"><%=tabela.des%></textarea>
                 </div>
+            </form>
                 <div id="divBotao">
-                    <button type="submit" class="botao" style=" margin-bottom: 0px; margin-left: 37%; margin-right: 20px;">Salvar</button>
-                </form>
-                <form method="post" action="/excluircategoria">
-                    <button type="submit" class="botao" name="idcategoria" value="<%=tabela.id%>" style=" margin-bottom: 0px; margin-left: 37%; margin-right: 20px;">Excluir</button>
-                </form>
-                    <a href="categorias.ejs"><button class="botao" type="button">Voltar</button></a> 
+                    <button type="submit" class="botao" style=" margin-bottom: 10px; margin-left: 40%; margin-right: 20px;">Salvar</button> 
+                    <br>
+                    <form method="post" action="/excluircategoria">
+                        <button type="submit" class="botao" name="idcategoria" value="<%=tabela.id%>" style=" margin-bottom: 10px; margin-left: 40%; margin-right: 20px;">Excluir</button>
+                    </form>
+                    <a href="categorias.ejs"><button class="botao" type="button" style=" margin-bottom: 0px; margin-left: 40%; margin-right: 20px;">Voltar</button></a>
+                    <br>
                 </div>
             </fieldset>
-        
         <footer id = "rodape"> <!--É o rodapé da página, onde fica as informações-->
             &copy; Copyright 2021 - by <a href="https://github.com/Gustavo-caetano">Gustavo Caetano</a>  e <a href="https://github.com/Valmir-Cunha">Valmir Cunha</a> 
         </footer>
