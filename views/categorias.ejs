@@ -62,8 +62,8 @@
             <a href="cadastroCategoria.ejs"><button class="botaoCadastroCategoria" >Cadastrar Categoria</button></a>
         </div>
         <h2>Categorias</h2>
-        <%list.forEach(function(lists){%>
         <section class="catalogo" id="catalogo">
+        <%list.forEach(function(lists){%>
                 <div class="cardsCategoria">
                     <div class="conteudoCard">
                         <h4><%=lists.nome%></h4>
@@ -79,8 +79,8 @@
                     </div>
                 </div>
             <br>
-        </section>
         <%})%>
+        </section>
         <footer id = "rodape"> <!--É o rodapé da página, onde fica as informações-->
             &copy; Copyright 2021 - by <a href="https://github.com/Gustavo-caetano">Gustavo Caetano</a>  e <a href="https://github.com/Valmir-Cunha">Valmir Cunha</a> 
         </footer>
