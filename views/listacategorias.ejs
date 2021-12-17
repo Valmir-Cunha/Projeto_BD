@@ -92,17 +92,17 @@
             <section class="catalogo" id="catalogo">
                 <%tabel[0].possuis.forEach(function(tabels){%>
                     <div class="cardsProdutos">
-                            <img src="/uploads/<%=tabels.imagem.dataValues.image%>" class="image" alt="Imagem Produto">
+                            <img src="/uploads/<%=tabels.produto.dataValues.image%>" class="image" alt="Imagem Produto">
                         <div class="conteudoCard">
-                            <h4><%=tabels.imagem.dataValues.name%></h4>
-                            <p><%=tabels.imagem.dataValues.des%></p>
+                            <h4><%=tabels.produto.dataValues.name%></h4>
+                            <p><%=tabels.produto.dataValues.des%></p>
                             <form method="post" action="/produtopag">
-                                <button type="submit" name="send" value="<%=tabels.imagem.dataValues.id%>" >Visualizar</button>
+                                <button type="submit" name="send" value="<%=tabels.produto.dataValues.id%>" >Visualizar</button>
                             </form>
                             <form method="post" action="/excluirdacateg">
-                                <input type="hidden" value="<%=tabels.imagem.dataValues.id%>" name="produto">
+                                <input type="hidden" value="<%=tabels.produto.dataValues.id%>" name="produto">
                                 <input type="hidden" value="<%=tabel[0].dataValues.id%>" name="id">
-                                <input type="hidden" value="<%=tabels.imagem.dataValues.id%>" name="produto">
+                                <input type="hidden" value="<%=tabels.produto.dataValues.id%>" name="produto">
                                 <input type="submit" value="Excluir" class="exclui">
                             </form>
                             
