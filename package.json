@@ -13,7 +13,7 @@
     "nodemon": "^2.0.15",
     "pg": "^8.7.1",
     "sequelize": "^6.12.0-beta.1",
-    "fs":"^0.0.1-security"
+    "fs": "^0.0.1-security"
   },
   "repository": {
     "type": "git",

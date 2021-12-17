@@ -13,6 +13,14 @@
             font-size: 15px;
             font-weight: bold;
         }
+        .lista{
+            background-color: Transparent;
+            background-repeat:no-repeat;
+            border: none;
+            cursor:pointer;
+            overflow: hidden;
+            outline:none;
+        }
     </style>
 </head>
 <body>
@@ -34,42 +42,52 @@
                 <form action="\excluir" method="post">
                 <div class="campo">
                     <label for="imagemProduto">Imagem:</label> <!--o "for" referencia para onde esse label se refere-->
-                    <img src="/uploads/<%=tabels.image%>"width="200px" height="100px" alt="Imagem Produto">
+                    <img src="/uploads/<%=tabels[0].dataValues.image%>"width="200px" height="100px" alt="Imagem Produto">
                     <br>
                 </div>
                 <div class="campo">
                     <label for="idProduto">Código:</label> <!--o "for" referencia para onde esse label se refere-->
                     <br>
-                    <input type="number" name="id" id="idProduto" readonly="readonly" value="<%=tabels.id%>"> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
+                    <input type="number" name="id" id="idProduto" readonly="readonly" value="<%=tabels[0].dataValues.id%>"> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
                 </div>
 
                 <div class="campo">
                     <label for="nomeProduto">Nome do produto:</label>
                     <br>
-                    <input type="text" name="nome" id="nomeProduto" readonly="readonly" value="<%=tabels.name%>"> 
+                    <input type="text" name="nome" id="nomeProduto" readonly="readonly" value="<%=tabels[0].dataValues.name%>"> 
                 </div>
     
                 <div class="campo">
                     <label for="marcaProduto">Marca:</label>
                     <br>
-                    <input type="text" name="marca" id="marcaProduto" readonly="readonly" value="<%=tabels.marca%>">
+                    <input type="text" name="marca" id="marcaProduto" readonly="readonly" value="<%=tabels[0].dataValues.marca%>">
                 </div>
-    
+
+
                 <div class="campo">
                     <label for="categoriaProduto">Categoria:</label>
-                    <br>
-                    <input type="text" name="categoria" id="categoriaProduto" readonly="readonly" value="<%=tabels.categoria%>">
+                    <!-- <br> -->
+                    <p class="lista" >
+                        <%tabels[0].possuis.forEach(function(tabel){%>
+                            <select name="d" class="itens">
+                                 
+                                         <option aria-readonly="true" value="<%=tabel.dataValues.categorium.dataValues.nome%>"><%=tabel.dataValues.categorium.dataValues.nome%></option>
+                                
+                            </select>
+                        <%})%>
+                     </p>
                 </div>
 
                 <div class="campo">
                     <label for="quantidadeProduto">Quantidade:</label>
                     <br>
-                    <input type="number" name="quantidade" id="quantidadeProduto" readonly="readonly" value="<%=tabels.quantidade%>"> 
+                    <input type="number" name="quantidade" id="quantidadeProduto" readonly="readonly" value="<%=tabels[0].dataValues.quantidade%>"> 
                 </div>
+                
                 <div class="campo">
                     <label for="">Descrição do produto:</label>
                     <br>
-                    <textarea name="descricao" id="areaDescricao" cols="30" rows="10" readonly="readonly"><%=tabels.des%></textarea>
+                    <textarea name="descricao" id="areaDescricao" cols="30" rows="10" readonly="readonly"><%=tabels[0].dataValues.des%></textarea>
                 </div>
                 
                 <div id="divBotao">
@@ -78,7 +96,7 @@
                     <input type="hidden" value="<%=tabels.image%>" name="imagem">
                     <input type="hidden" name= "salvar"  id="save"  value="nada" name="imagem">
                     <button type="submit" name="save" class="botao" style=" margin-bottom: 0px; margin-right: 20px;" value="<%=tabels.id%>">Salvar</button>
-                    <button type="submit" name="apagar" class="botao" value="<%=tabels.id%>">Excluir</button>
+                    <button type="submit" name="apagar" class="botao" value="<%=tabels[0].dataValues.id%>">Excluir</button>
                     
                 </div>
             </form>
@@ -88,7 +106,7 @@
                     document.getElementById("idProduto").removeAttribute('readonly');
                     document.getElementById("nomeProduto").removeAttribute('readonly');
                     document.getElementById("marcaProduto").removeAttribute('readonly');
-                    document.getElementById("categoriaProduto").removeAttribute('readonly');
+                    // document.getElementById("categoriaProduto").removeAttribute('readonly');
                     document.getElementById("quantidadeProduto").removeAttribute('readonly');
                     document.getElementById("areaDescricao").removeAttribute('readonly');
                     document.getElementById("save").value="salvar"

@@ -8,6 +8,7 @@
     <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="_css/estilo.css">
     <link rel="stylesheet" href="_css/estiloCatalogoProdutos.css"> 
+    <link rel="stylesheet" href="_css/estiloCatalogoCategorias.css">
     <style>
         nav#menu{
             display: block;
@@ -21,7 +22,28 @@
             left: 37%;
             border-radius: 5px;
         }
-     
+        
+        button.botaoCadastroCategoria {
+            font-size: 1.2em;
+            background-color:#dddddd;
+            border: 0;
+            margin-bottom: 1em;
+            padding: 0.2em 0.6em;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0,0.2);  
+            position: relative;
+            cursor: pointer;
+            margin-bottom: 0px;
+            top: 87%;
+            left: 42%;
+            margin-right: -40%;
+        }
+
+        .botaoCadastroCategoria:hover{
+            background-color: #606060;
+            box-shadow: inset 2px 2px 2px rgba(0, 0, 0,0.2);
+            text-shadow: none;
+        }
+
         button.botaoCadastro {
             font-size: 1.2em;
             background-color:#dddddd;
@@ -52,22 +74,50 @@
 <body>
     <div class="container-fluid">
         <div id="interface">
-            <header id = "cabecalho">
+            <!-- <header id = "cabecalho">
                 <nav id="menu" > <!-- Determina um menu de navegação, tudo que estiver dentro dessa tag será considerada parte do menu -->
-            </nav>
+            </nav> -->
 
             </header>
+            <div id="interface">
+                <header id = "cabecalho">
+                    <!-- <h1>Loja do Fulano</h1> -->
+                    <nav id="menu" > <!-- Determina um menu de navegação, tudo que estiver dentro dessa tag será considerada parte do menu -->
+                        <ul>
+                            <h1>Página inicial</h1>
+                            <li><a href="/">Página principal</a> </li> 
+                            <li><a href="categorias.ejs">Categorias</a></li>  
+                            <li><a href="sobre_nos.ejs">Sobre nós</a></li>
+                            <li><a href="login.ejs">Perfil</a></li>
+                        </ul>
+                    </nav>
+                </header>
+            <div id="divBotao">
+                <button class="botaoCadastroCategoria" onclick="excluir()" >Excluir produto</button>
+                <form method="post" action="/pagcategoria">
+                <button class="botaoCadastroCategoria" value="<%=tabel[0].dataValues.id%>" name="categoria" >Editar Categoria</button>
+                </form>
+            </div>
             <h2>Produtos</h2>   
+            <h3><%=tabel[0].dataValues.nome%></h3>  
+            <h4><%=tabel[0].dataValues.des%></h4>
             <section class="catalogo" id="catalogo">
-                <%tabel.forEach(function(tabels){%>
+                <%tabel[0].possuis.forEach(function(tabels){%>
                     <div class="cardsProdutos">
-                            <img src="/uploads/<%=tabels.image%>" class="image" alt="Imagem Produto">
+                            <img src="/uploads/<%=tabels.imagem.dataValues.image%>" class="image" alt="Imagem Produto">
                         <div class="conteudoCard">
-                            <h4><%=tabels.name%></h4>
-                            <p><%=tabels.des%></p>
+                            <h4><%=tabels.imagem.dataValues.name%></h4>
+                            <p><%=tabels.imagem.dataValues.des%></p>
                             <form method="post" action="/produtopag">
-                                <button type="submit" name="send" value="<%=tabels.id%>" >Visualizar</button>
+                                <button type="submit" name="send" value="<%=tabels.imagem.dataValues.id%>" >Visualizar</button>
                             </form>
+                            <form method="post" action="/excluirdacateg">
+                                <input type="hidden" value="<%=tabels.imagem.dataValues.id%>" name="produto">
+                                <input type="hidden" value="<%=tabel[0].dataValues.id%>" name="id">
+                                <input type="hidden" value="<%=tabels.imagem.dataValues.id%>" name="produto">
+                                <input type="submit" value="excluir" class="exclui">
+                            </form>
+                            
                         </div>
                     </div>
                 <%})%>
@@ -77,8 +127,10 @@
                 &copy; Copyright 2021 - by <a href="https://github.com/Gustavo-caetano">Gustavo Caetano</a>  e <a href="https://github.com/Valmir-Cunha">Valmir Cunha</a> 
             </footer>
         </div>
-        <script>
-            
+        <script type="text/javascript">
+            function excluir(){
+                document.getElementsByClassName("exclui").type="submit";
+            }
         </script>
     </div>
 </body>

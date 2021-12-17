@@ -22,22 +22,22 @@
                 </ul>
             </nav>
         </header>
-        <h2 id = "centro">Cadastro produtos</h2>
+        <h2 id = "centro">Cadastro categoria</h2>
         <div id="interface cadastro">
-            <p>Preencha todos os campos para realizar o cadastro do produto!</p>
+            <p>Preencha todos os campos para realizar o cadastro da categoria!</p>
         </div>
     
-        <form method="post"  action="/categoria" enctype="multipart/form-data" >  <!--Define a área de um formulário-->
+        <form method="post" action="/possui" >  <!--Define a área de um formulário-->
             <fieldset class="grupo"> <!--Pesquise-->
                 <div class="campo">
                     <label for="idCategoria">Código:</label> <!--o "for" referencia para onde esse label se refere-->
                     <br>
-                    <input type="number" name="id" id="idCategoria" required> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
+                    <input type="number" name="id" id="idCategoria" value="<%=numb%>" readonly> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
                 </div>
                 <div class="campo">
                     <label for="nomeCategoria">Nome da categoria:</label>
                     <br>
-                    <input type="text" name="nome" id="nomeCategoria" required> 
+                    <input type="text" name="name" id="nomeCategoria" required> 
                 </div>    
                 <div class="campo">
                     <label for="">Descrição da categoria:</label>

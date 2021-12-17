@@ -22,35 +22,38 @@
                 </ul>
             </nav>
         </header>
-        <h2 id = "centro">Cadastro produtos</h2>
+        <h2 id = "centro">Categoria</h2>
         <div id="interface cadastro">
             <p>Preencha todos os campos para realizar o cadastro do produto!</p>
         </div>
     
-        <form method="post"  action="/categoria" enctype="multipart/form-data" >  <!--Define a área de um formulário-->
+        <form method="post"  action="/editarcateg"  >  <!--Define a área de um formulário-->
             <fieldset class="grupo"> <!--Pesquise-->
                 <div class="campo">
                     <label for="idCategoria">Código:</label> <!--o "for" referencia para onde esse label se refere-->
                     <br>
-                    <input type="number" name="id" id="idCategoria" readonly> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
+                    <input type="number" name="id" id="idCategoria" value="<%=tabela.id%>" readonly> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
                 </div>
                 <div class="campo">
                     <label for="nomeCategoria">Nome da categoria:</label>
                     <br>
-                    <input type="text" name="nome" id="nomeCategoria" readonly> 
+                    <input type="text" name="nome" id="nomeCategoria" value="<%=tabela.nome%>" > 
                 </div>
                 <div class="campo">
                     <label for="">Descrição da categoria:</label>
                     <br>
-                    <textarea name="descricao" id="areaDescricao" cols="30" rows="10" readonly></textarea>
+                    <textarea name="descricao" id="areaDescricao" cols="30" rows="10"><%=tabela.des%></textarea>
                 </div>
                 <div id="divBotao">
                     <button type="submit" class="botao" style=" margin-bottom: 0px; margin-left: 37%; margin-right: 20px;">Salvar</button>
-                    <button type="submit" class="botao" style=" margin-bottom: 0px; margin-left: 37%; margin-right: 20px;">Excluir</button>
+                </form>
+                <form method="post" action="/excluircategoria">
+                    <button type="submit" class="botao" name="idcategoria" value="<%=tabela.id%>" style=" margin-bottom: 0px; margin-left: 37%; margin-right: 20px;">Excluir</button>
+                </form>
                     <a href="categorias.ejs"><button class="botao" type="button">Voltar</button></a> 
                 </div>
             </fieldset>
-        </form>
+        
         <footer id = "rodape"> <!--É o rodapé da página, onde fica as informações-->
             &copy; Copyright 2021 - by <a href="https://github.com/Gustavo-caetano">Gustavo Caetano</a>  e <a href="https://github.com/Valmir-Cunha">Valmir Cunha</a> 
         </footer>

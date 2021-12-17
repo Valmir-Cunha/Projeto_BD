@@ -3,25 +3,37 @@ const app=express();
 const path=require("path");
 const bodyparse=require("body-parser");
 const connection=require("./database/Usuario/usuario");//conexão com banco de dados
-const image=require("./database/database/teste");
+const image=require("./database/database/produto");
 const multer=require("multer");
 const req = require("express/lib/request");
 const upload=multer({dest:"public/uploads/"});
 const fss=require("fs");
 const { call } = require("body-parser");
+const categoria=require("./database/categoria/categoria");
+const console = require("console");
+const possui=require("./database/categoria/possui");
+const { Json } = require("sequelize/dist/lib/utils");
 
-const categoria=["Casa","Madeira","Banheiro","Tinta"];
+
 
 module.exports={
-    //definição de rotas e ligação do servidor
+    //definição de rotas{e ligação do servidor
     conect(){
         
        app.get("/",(req,res)=>{
-            image.findAll({raw:true}).then(tabela=>{
+            image.findAll({raw:true,}).then(tabela=>{
                 res.render("../views/pagMain",{
                     tabel:tabela,
+<<<<<<< HEAD
                 });
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+=======
+                })
             });
+>>>>>>> 97d44b58e1c7a1ed17921312f6e8131852eb37ea
         });
         app.get("/login.ejs",(req,res)=>{
             res.render("../views/login");
@@ -39,26 +51,41 @@ module.exports={
             res.render("../views/sobre_nos");
         });
         app.get("/cadastroProduto.ejs",(req,res)=>{
+            image.max('id').then(number=>{
+            categoria.findAll({raw:true}).then(tabela=>{
             res.render("../views/cadastroProduto",{
-                list:categoria
+                list:tabela,
+                number:(number+1)
             });
+        });
+        });
         });
         app.get("/perfil.ejs",(req,res)=>{
             res.render("../views/perfil");
         });
         app.get("/categorias.ejs",(req,res)=>{
-            res.render("../views/categorias",{
-                list:categoria
-            });
+                categoria.findAll({raw:true}).then(tabela=>{
+                    res.render("../views/categorias",{
+                        list:tabela
+                    });
+                })
+                .catch((err)=>{
+                    console.log(err);
+                })
         });
         app.get("/cadastroCategoria.ejs",(req,res)=>{
-            res.render("../views/cadastroCategoria");
+            categoria.max('id').then(number=>{
+            res.render("../views/cadastroCategoria",{
+                numb:(number+1)
+            }
+            );
+        })
         });
         app.get("/listacategorias.ejs",(req,res)=>{
             res.render("../views/listacategorias");
         });
 
-        app.listen(process.env.PORT || 4000,()=>{console.log("ta pegando");});//onde o servidor é ligado
+        app.listen(process.env.PORT || 4000,()=>{console.log("ta pegando");})//onde o servidor é ligado
     },
     //recebimento de dados
     Date(){
@@ -94,15 +121,24 @@ module.exports={
         })
         app.post("/produto",upload.single('imagem'),(req,res)=>{
             const {filename,size}=req.file;
+            let id=req.body.id;
+            console.log(id);
+            let lista=[...new Set(req.body.d)]
 
             image.create({
                 name:req.body.nome,
                 image:filename,
                 marca:req.body.marca,
-                categoria:req.body.categoria,
                 quantidade:req.body.quantidade,
                 des:req.body.descricao
-            }).then(()=>{
+            }).then(table=>{    
+                for(let i=0;i<lista.length;i++){
+                    possui.create({
+                        idcategoria:lista[i],
+                        idproduto:table.id  
+                    }).then((tabela)=>{console.log(tabela)})
+                                   .catch(err=>{console.log(err)})
+                }
                 image.findAll().then(tabela=>{
                     res.render("../views/pagMain",{
                         tabel:tabela
@@ -112,48 +148,59 @@ module.exports={
 
         })
         app.post("/produtopag",(req,res)=>{
-            let Id=req.body.send;
-            image.findOne({
+            let Id=req.body.send;   
+            image.findAll({
                 where:{
                     id:Id
-                }
+                },
+                include:[{
+                    model:possui,
+                    include:[{model:categoria}]
+                }],
             }).then(tabel=>{
                 res.render("../views/produtoView",{
                     tabels:tabel
-                });
-            });
+                })
+            }) 
+            .catch(err=>{
+                 console.log(err);
+             })
         });
         app.post("/excluir",(req,res)=>{
             let mod=req.body.apagar;
-            let nome=req.body.imagem;
-            let tipo=req.body.edit;
             let salvar=req.body.salvar;
             let save=req.body.save;
-            //fss.unlink('./public/uploads/'+nome);
+            let quantidade=parseInt(req.body.quantidade);
+
             if(salvar=="salvar"){
                 
                 let valores={
                 name:req.body.nome,
                 marca:req.body.marca,
-                categoria:req.body.categoria,
                 quantidade:req.body.quantidade,
                 des:req.body.descricao
                 }
                 image.update(valores,{where:{
                     id:save
-                }}).then(()=>{
+                }}).then((tabel)=>{
+                    console.log(tabel);
                     image.findAll({raw:true}).then(tabela=>{
                         res.render("../views/pagMain",{
                             tabel:tabela
                         });
                 })
-            });
+            
+            })
+            .catch(err=>{
+                console.log(err);
+            })
             }else{
                 if(mod){
                     image.destroy({
                         where:{
                             id:mod
-                        }
+                        },
+                        include:[{model:possui}]
                     }).then(()=>{
                         image.findAll({raw:true}).then(tabela=>{
                             res.render("../views/pagMain",{
@@ -172,17 +219,125 @@ module.exports={
         }
         });
         app.post("/categorias",(req,res)=>{
-            let categ=req.body.categoria;
-            image.findAll({
-                where:{
-                    categoria:categ
+
+            let modo=req.body.sumido;
+
+                let id=req.body.catego;
+                categoria.findAll({
+                    where:{
+                        id:id
+                    },
+                    include:[{
+                        model:possui,
+                        include:[{model:image}]
+                    }]
+                    
                 }
-            }).then(tabela=>{
-                res.render("../views/listacategorias",{
-                    tabel:tabela
-                });
-            });
+                ).then(tabela=>{
+                    res.render("../views/listacategorias",{
+                        tabel:tabela
+                    }) 
+                })
+                .catch(err=>{console.log(err)})
+                
+        });
+        app.post("/pagcategoria",(req,res)=>{
+                let categ=req.body.categoria;
+                if(categ!=undefined){
+                categoria.findOne({
+                    where:{
+                        id:categ
+                    }
+                }).then(tabela=>{
+                    res.render("../views/categoriaView",{
+                        tabela:tabela
+                    });
+                })
+            }else{
+                console.log(categ);
+            }
         })
+        app.post("/excluircategoria",(req,res)=>{
+            let idcategoria=req.body.idcategoria;
+            categoria.destroy({
+                where:{
+                    id:idcategoria
+                },
+                include:[{model:possui}]
+            }).then(()=>{
+                categoria.findAll({raw:true}).then(tabela=>{
+                    res.render("../views/categorias",{
+                        list:tabela
+                    });
+                })
+                .catch((err)=>{
+                    console.log(err);
+                })
+            })
+        })
+        app.post("/excluirdacateg",(req,res)=>{
+            let categ=req.body.produto;
+            let produto=req.body.id;
+            if(categ!=undefined){
+            possui.destroy({
+                where:{
+                    idproduto:categ,
+                    idcategoria:produto
+                }
+            }).then((tabel)=>{
+                console.log(tabel)
+                categoria.findAll({
+                    where:{
+                        id:req.body.id
+                    },
+                    include:[{
+                        model:possui,
+                        include:[{model:image}]
+                    }]
+                    
+                }
+                ).then(tabela=>{
+                    res.render("../views/listacategorias",{
+                        tabel:tabela
+                    }) 
+                })
+            })
+        }else{
+            console.log(categ);
+        }
+    })
+        app.post("/editarcateg",(req,res)=>{
+            categoria.update({
+                nome:req.body.nome,
+                des:req.body.descricao
+            },{
+                where:{
+                    id:req.body.id
+                }
+            }).then(()=>{
+                categoria.findAll({raw:true}).then(tabela=>{
+                    res.render("../views/categorias",{
+                        list:tabela
+                    });
+                 })})
+               .catch((err)=>{
+                    console.log(err);
+               })
+        
+        })
+        app.post("/possui",(req,res)=>{
+            categoria.create({
+                nome:req.body.name,
+                des:req.body.descricao
+            }).then(()=>{
+                categoria.findAll({raw:true}).then(tabela=>{
+                    res.render("../views/categorias",{
+                        list:tabela
+                    });
+                 })
+            })
+            .catch(err=>{console.log(err)})
+        });
     }, 
     //definição de arquivos estaticos e recebimento de dados
     Static(){

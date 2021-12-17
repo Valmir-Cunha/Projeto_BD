@@ -32,13 +32,13 @@
                 <div class="campo">
                     <label for="idProduto">Código:</label> <!--o "for" referencia para onde esse label se refere-->
                     <br>
-                    <input type="number" name="id" id="idProduto" required> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
+                    <input type="number" name="id" id="idProduto" value="" readonly='readonly' required> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
                 </div>
-                <div class="campo">
-                    <label for="imagemProduto">Imagem:</label> <!--o "for" referencia para onde esse label se refere-->
-                    <br>
-                    <input type="file" name="imagem" id="imagemProduto" accept="image/*"> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
-                </div>
+                    <div class="campo">
+                        <label for="imagemProduto">Imagem:</label> <!--o "for" referencia para onde esse label se refere-->
+                        <br>
+                        <input type="file" name="imagem" id="imagemProduto" accept="image/*"> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
+                    </div>
                 <div class="campo">
                     <label for="nomeProduto">Nome do produto:</label>
                     <br>
@@ -54,12 +54,16 @@
                 <div class="campo">
                     <label for="categoriaProduto">Categoria:</label>
                     <br>
-                    <select name="categoria">
+                    <div id="cate">
+                    <select name="d" class="itens">
                         <%list.forEach(function(lists){%>
-                        <option value="<%=lists%>"><%=lists%></option>
+                        <option value="<%=lists.id%>"><%=lists.nome%></option>
                         <%})%>
                     </select>
-                </div>
+                    </div>
+                    <br>
+                    <button type="button" class="botao" onclick="adicionar()" >adicionar</button>
+                </div>  
 
                 <div class="campo">
                     <label for="quantidadeProduto">Quantidade:</label>
@@ -78,6 +82,18 @@
                 </div>
             </fieldset>
         </form>
+        <script>
+             function adicionar(){
+                let numb="d";
+                let parte=document.getElementById("cate").innerHTML;
+                parte+="<select name="+numb+" class="+"itens"+">";
+                parte+="<%list.forEach(function(lists){%>"
+                parte+="<option value="+"<%=lists.id%>"+">"+"<%=lists.nome%></option>"
+                parte+="<%})%>"
+                parte+="</select>"
+                document.getElementById("cate").innerHTML=parte;
+            }
+        </script>
         <footer id = "rodape"> <!--É o rodapé da página, onde fica as informações-->
             &copy; Copyright 2021 - by <a href="https://github.com/Gustavo-caetano">Gustavo Caetano</a>  e <a href="https://github.com/Valmir-Cunha">Valmir Cunha</a> 
         </footer>

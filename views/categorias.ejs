@@ -33,7 +33,7 @@
             margin-bottom: 0px;
             top: 87%;
             left: 42%;
-            margin-right: -50%;
+            margin-right: -35%;
         }
 
         .botaoCadastroCategoria:hover{
@@ -66,10 +66,15 @@
         <section class="catalogo" id="catalogo">
                 <div class="cardsCategoria">
                     <div class="conteudoCard">
-                        <h4><%=lists%></h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        <form method="post" action="/categorias">
-                        <button  class="botaoVisualizar" name="categoria" type="submit" value="<%=lists%>">Visualizar</button>
+                        <h4><%=lists.nome%></h4>
+                        <p><%=lists.des%></p>
+                        <form method="post" action="/categorias" >
+                        <div class="div">
+                        <input type="hidden"  class="valu" value="editar">
+                        <input type="hidden" name="sumido" id="value" value="no">
+                        <input type="hidden" name="categoria" value="<%=lists.id%>">
+                        </div>
+                        <button  id="bot" class="botaoVisualizar" name="catego" type="submit" value="<%=lists.id%>">Visualizar</button>
                         </form>
                     </div>
                 </div>
@@ -79,6 +84,12 @@
         <footer id = "rodape"> <!--É o rodapé da página, onde fica as informações-->
             &copy; Copyright 2021 - by <a href="https://github.com/Gustavo-caetano">Gustavo Caetano</a>  e <a href="https://github.com/Valmir-Cunha">Valmir Cunha</a> 
         </footer>
+        <script>
+            function editar(){
+                document.getElementsByClassName("valu").type="submit";
+                document.getElementsById("sumido").value="edit";
+            }
+        </script>
     </div>
 </body>
 </html>

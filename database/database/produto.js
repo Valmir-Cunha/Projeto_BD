@@ -7,10 +7,9 @@ const imag = type.define('imagem',{
     primaryKey: true,
     autoIncrement: true
     },
-    image:Sequelize.STRING,
+   image:Sequelize.STRING,
    name: Sequelize.STRING,
    marca: Sequelize.STRING,
-   categoria: Sequelize.STRING,
    quantidade:Sequelize.INTEGER,
    des:Sequelize.STRING
 }
