@@ -138,6 +138,7 @@ module.exports={
                 quantidade:req.body.quantidade,
                 des:req.body.descricao
                 }
+                console.log(valores);
                 image.update(valores,{where:{
                     id:save
                 }}).then(()=>{
