@@ -28,5 +28,5 @@ possui.belongsTo(produto,{
     onDelete:'CASCADE',
     onUpdate:'CASCADE'
 })
-possui.sync({force:false});
+// possui.sync({force:false});
 module.exports=possui;

@@ -3,7 +3,7 @@ const app=express();
 const path=require("path");
 const bodyparse=require("body-parser");
 const connection=require("./database/Usuario/usuario");//conexão com banco de dados
-const image=require("./database/database/produto");
+const produto=require("./database/database/produto");
 const multer=require("multer");
 const req = require("express/lib/request");
 const upload=multer({dest:"public/uploads/"});
@@ -21,7 +21,7 @@ module.exports={
     conect(){
         
        app.get("/",(req,res)=>{
-            image.findAll({raw:true,}).then(tabela=>{
+            produto.findAll({raw:true,}).then(tabela=>{
                 res.render("../views/pagMain",{
                     tabel:tabela,
                 });
@@ -47,13 +47,10 @@ module.exports={
             res.render("../views/sobre_nos");
         });
         app.get("/cadastroProduto.ejs",(req,res)=>{
-            image.max('id').then(number=>{
             categoria.findAll({raw:true}).then(tabela=>{
             res.render("../views/cadastroProduto",{
                 list:tabela,
-                number:(number+1)
             });
-        });
         });
         });
         app.get("/perfil.ejs",(req,res)=>{
@@ -120,8 +117,8 @@ module.exports={
             let id=req.body.id;
             console.log(id);
             let lista=[...new Set(req.body.d)]
-
-            image.create({
+            console.log(lista);
+            produto.create({
                 name:req.body.nome,
                 image:filename,
                 marca:req.body.marca,
@@ -135,17 +132,13 @@ module.exports={
                     }).then((tabela)=>{console.log(tabela)})
                                    .catch(err=>{console.log(err)})
                 }
-                image.findAll().then(tabela=>{
-                    res.render("../views/pagMain",{
-                        tabel:tabela
-                    });
-                });
+                res.redirect("/");
             })
 
         })
         app.post("/produtopag",(req,res)=>{
             let Id=req.body.send;   
-            image.findAll({
+            produto.findAll({
                 where:{
                     id:Id
                 },
@@ -162,7 +155,7 @@ module.exports={
                  console.log(err);
              })
         });
-        app.post("/excluir",(req,res)=>{
+        app.post("/excluir",async (req,res)=>{
             let mod=req.body.apagar;
             let salvar=req.body.salvar;
             let save=req.body.save;
@@ -170,7 +163,7 @@ module.exports={
 
             if(salvar=="salvar"){
                 console.log(save);
-                image.update({
+                produto.update({
                     name:req.body.nome,
                     marca:req.body.marca,
                     quantidade:req.body.quantidade,
@@ -180,7 +173,7 @@ module.exports={
                         id:req.body.id
                 }}).then((tabel)=>{
                     console.log(tabel);
-                    image.findAll({raw:true}).then(tabela=>{
+                    produto.findAll({raw:true}).then(tabela=>{
                         res.render("../views/pagMain",{
                             tabel:tabela
                         });
@@ -192,20 +185,20 @@ module.exports={
             })
             }else{
                 if(mod){
-                    image.destroy({
+                    produto.destroy({
                         where:{
                             id:mod
                         },
                         include:[{model:possui}]
                     }).then(()=>{
-                        image.findAll({raw:true}).then(tabela=>{
+                        produto.findAll({raw:true}).then(tabela=>{
                             res.render("../views/pagMain",{
                                 tabel:tabela
                             });
                     })
                 })
                 }else{
-                    image.findAll({raw:true}).then(tabela=>{
+                    produto.findAll({raw:true}).then(tabela=>{
                         res.render("../views/pagMain",{
                             tabel:tabela
                         });
@@ -225,7 +218,7 @@ module.exports={
                     },
                     include:[{
                         model:possui,
-                        include:[{model:image}]
+                        include:[{model:produto}]
                     }]
                     
                 }
@@ -288,7 +281,7 @@ module.exports={
                     },
                     include:[{
                         model:possui,
-                        include:[{model:image}]
+                        include:[{model:produto}]
                     }]
                     
                 }

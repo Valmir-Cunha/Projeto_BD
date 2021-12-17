@@ -1,7 +1,7 @@
 const Sequelize=require('sequelize');
 const type=require('./database');
 
-const imag = type.define('imagem',{
+const produto = type.define('produto',{
     id:{
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -15,6 +15,6 @@ const imag = type.define('imagem',{
 }
 )
 
-imag.sync({force:false});
+produto.sync({force:false});
 
-module.exports=imag;
+module.exports=produto;
