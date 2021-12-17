@@ -169,15 +169,15 @@ module.exports={
             let quantidade=parseInt(req.body.quantidade);
 
             if(salvar=="salvar"){
-                
-                let valores={
-                name:req.body.nome,
-                marca:req.body.marca,
-                quantidade:req.body.quantidade,
-                des:req.body.descricao
-                }
-                image.update(valores,{where:{
-                    id:save
+                console.log(save);
+                image.update({
+                    name:req.body.nome,
+                    marca:req.body.marca,
+                    quantidade:req.body.quantidade,
+                    des:req.body.descricao
+                    },{
+                    where:{
+                        id:req.body.id
                 }}).then((tabel)=>{
                     console.log(tabel);
                     image.findAll({raw:true}).then(tabela=>{
@@ -326,11 +326,7 @@ module.exports={
                 nome:req.body.name,
                 des:req.body.descricao
             }).then(()=>{
-                categoria.findAll({raw:true}).then(tabela=>{
-                    res.render("../views/categorias",{
-                        list:tabela
-                    });
-                 })
+                res.redirect("/categorias.ejs");
             })
             .catch(err=>{console.log(err)})
         });
