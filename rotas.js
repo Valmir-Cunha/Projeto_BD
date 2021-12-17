@@ -24,16 +24,12 @@ module.exports={
             image.findAll({raw:true,}).then(tabela=>{
                 res.render("../views/pagMain",{
                     tabel:tabela,
-<<<<<<< HEAD
                 });
             })
             .catch(err=>{
                 console.log(err);
             })
-=======
-                })
-            });
->>>>>>> 97d44b58e1c7a1ed17921312f6e8131852eb37ea
+              
         });
         app.get("/login.ejs",(req,res)=>{
             res.render("../views/login");
