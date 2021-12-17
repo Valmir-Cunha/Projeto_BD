@@ -56,13 +56,14 @@
                     <br>
                     <div id="cate">
                     <select name="d" class="itens">
+                        <option value="0">Selecione</option>
                         <%list.forEach(function(lists){%>
                         <option value="<%=lists.id%>"><%=lists.nome%></option>
                         <%})%>
                     </select>
                     </div>
                     <br>
-                    <button type="button" class="botao" onclick="adicionar()" >adicionar</button>
+                    <button type="button" class="botao" onclick="adicionar()" >Adicionar</button>
                 </div>  
 
                 <div class="campo">
