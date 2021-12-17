@@ -138,10 +138,10 @@ module.exports={
                 quantidade:req.body.quantidade,
                 des:req.body.descricao
                 }
-                console.log(valores);
                 image.update(valores,{where:{
                     id:save
-                }}).then(()=>{
+                }}).then((tabel)=>{
+                    console.log(tabel);
                     image.findAll({raw:true}).then(tabela=>{
                         res.render("../views/pagMain",{
                             tabel:tabela
