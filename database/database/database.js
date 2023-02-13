@@ -15,7 +15,6 @@ const sequelize = new Sequelize({
 }
 });
 
-
 sequelize
         .authenticate()
         .then(()=>{console.log("entrou\n");})

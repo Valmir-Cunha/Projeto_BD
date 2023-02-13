@@ -1,0 +1,80 @@
+@charset "UTF-8";
+ 
+.catalogo{
+  width: 50vw; /*"vw" = view width , quanto do tamanho da tela*/
+  margin: 10;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 800px;
+}
+
+.catalogo > div{
+  flex: 1 1 150px;
+}
+
+.cardsProdutos {
+  max-width: 200px;
+  background: #dddddd;
+  border-radius: 5px;
+  height: 100%;
+  padding: 5px;
+  margin: 5px;
+  display: flexbox;
+  align-items: center;
+}
+
+.cardsProdutos img{
+  width: 80%;
+  margin-top: 5px;
+  border-radius: 5px;
+  display: flexbox;
+  align-items: center;
+}
+
+.conteudoCard {
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.conteudoCard h4 {
+  font-size: 15pt;
+  text-align: center;
+  margin: 5px;
+}
+
+.cardsProdutos button {
+  width: 110%;
+  padding: 10px 0px;
+  border: none;
+  background: gray;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-bottom: 10px;
+  margin-left: -5%;
+}
+.cardsProdutos input {
+  width: 110%;
+  padding: 10px 0px;
+  border: none;
+  background: gray;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-bottom: 10px;
+  margin-left: -5%;
+}
+
+.cardsProdutos button:hover {
+  background: black;
+  color: white;
+}

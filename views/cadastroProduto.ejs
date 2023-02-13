@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro produto</title>
+    <link rel="stylesheet" href="_css/estilo.css">
+    <link rel="stylesheet" href="_css/estiloCadastroProdutos.css">
+    <script lang="javascript" src="funcoes.js"></script>
+</head>
+<body>
+    <div id="interface">
+        <header id = "cabecalho">
+            <nav id="menu" > <!-- Determina um menu de navegação, tudo que estiver dentro dessa tag será considerada parte do menu -->
+                <ul>
+                    <h1>Página inicial</h1>
+                    <li><a href="/">Página principal</a> </li> 
+                    <li><a href="categorias.ejs">Categorias</a></li>  
+                    <li><a href="sobre_nos.ejs">Sobre nós</a></li>
+                    <li><a href="login.ejs">Perfil</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h2 id = "centro">Cadastro produtos</h2>
+        <div id="interface cadastro">
+            <p>Preencha todos os campos para realizar o cadastro do produto!</p>
+        </div>
+    
+        <form method="post"  action="/produto" enctype="multipart/form-data" >  <!--Define a área de um formulário-->
+            <fieldset class="grupo"> <!--Pesquise-->
+                <div class="campo">
+                    <label for="idProduto">Código:</label> <!--o "for" referencia para onde esse label se refere-->
+                    <br>
+                    <input type="number" name="id" id="idProduto" value="" readonly='readonly' required> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
+                </div>
+                    <div class="campo">
+                        <label for="imagemProduto">Imagem:</label> <!--o "for" referencia para onde esse label se refere-->
+                        <br>
+                        <input type="file" name="imagem" id="imagemProduto" accept="image/*"> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
+                    </div>
+                <div class="campo">
+                    <label for="nomeProduto">Nome do produto:</label>
+                    <br>
+                    <input type="text" name="nome" id="nomeProduto" required> 
+                </div>
+    
+                <div class="campo">
+                    <label for="marcaProduto">Marca:</label>
+                    <br>
+                    <input type="text" name="marca" id="marcaProduto" required>
+                </div>
+    
+                <div class="campo">
+                    <label for="categoriaProduto">Categoria:</label>
+                    <br>
+                    <div id="cate">
+                    <select name="d" class="itens">
+                        <option value="0">Selecione</option>
+                        <%list.forEach(function(lists){%>
+                        <option value="<%=lists.id%>"><%=lists.nome%></option>
+                        <%})%>
+                    </select>
+                    </div>
+                    <br>
+                    <button type="button" class="botao" onclick="adicionar()" >Adicionar</button>
+                </div>  
+
+                <div class="campo">
+                    <label for="quantidadeProduto">Quantidade:</label>
+                    <br>
+                    <input type="number" name="quantidade" id="quantidadeProduto" required>
+                </div>
+                <div class="campo">
+                    <label for="">Descrição do produto:</label>
+                    <br>
+                    <textarea name="descricao" id="areaDescricao" cols="30" rows="10"></textarea>
+                </div>
+                
+                <div id="divBotao">
+                    <button type="submit" class="botao" style=" margin-bottom: 0px; margin-left: 37%; margin-right: 20px;">Cadastrar</button>
+                    <a href="/"><button class="botao" type="button">Voltar</button></a> 
+                </div>
+            </fieldset>
+        </form>
+        <script>
+             function adicionar(){
+                let numb="d";
+                let parte=document.getElementById("cate").innerHTML;
+                parte+="<select name="+numb+" class="+"itens"+">";
+                parte+="<%list.forEach(function(lists){%>"
+                parte+="<option value="+"<%=lists.id%>"+">"+"<%=lists.nome%></option>"
+                parte+="<%})%>"
+                parte+="</select>"
+                document.getElementById("cate").innerHTML=parte;
+            }
+        </script>
+        <footer id = "rodape"> <!--É o rodapé da página, onde fica as informações-->
+            &copy; Copyright 2021 - by <a href="https://github.com/Gustavo-caetano">Gustavo Caetano</a>  e <a href="https://github.com/Valmir-Cunha">Valmir Cunha</a> 
+        </footer>
+    </div>
+</body>
+</html>

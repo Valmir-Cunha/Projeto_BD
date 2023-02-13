@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto</title>
+    <link rel="stylesheet" href="_css/estilo.css">
+    <link rel="stylesheet" href="_css/estiloCadastroProdutos.css">
+    <style>
+        label {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .lista{
+            background-color: Transparent;
+            background-repeat:no-repeat;
+            border: none;
+            cursor:pointer;
+            overflow: hidden;
+            outline:none;
+        }
+    </style>
+</head>
+<body>
+    <div id="interface">
+        <header id = "cabecalho">
+            <!-- <h1>Loja do Fulano</h1> -->
+            <nav id="menu" > <!-- Determina um menu de navegação, tudo que estiver dentro dessa tag será considerada parte do menu -->
+                <ul>
+                    <h1>Página inicial</h1>
+                    <li><a href="/">Página principal</a> </li> 
+                    <li><a href="categorias.ejs">Categorias</a></li>  
+                    <li><a href="sobre_nos.ejs">Sobre nós</a></li>
+                    <li><a href="login.ejs">Perfil</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div>
+            <fieldset class="grupo"> <!--Pesquise-->
+                <form action="\excluir" method="post">
+                <div class="campo">
+                    <label for="imagemProduto">Imagem:</label> <!--o "for" referencia para onde esse label se refere-->
+                    <img src="/uploads/<%=tabels[0].dataValues.image%>"width="200px" height="100px" alt="Imagem Produto">
+                    <br>
+                </div>
+                <div class="campo">
+                    <label for="idProduto">Código:</label> <!--o "for" referencia para onde esse label se refere-->
+                    <br>
+                    <input type="number" name="id" id="idProduto" readonly="readonly" value="<%=tabels[0].dataValues.id%>"> <!--required diz que o formulário não pode ser enviado se o campo não for preenchidp-->
+                </div>
+
+                <div class="campo">
+                    <label for="nomeProduto">Nome do produto:</label>
+                    <br>
+                    <input type="text" name="nome" id="nomeProduto" readonly="readonly" value="<%=tabels[0].dataValues.name%>"> 
+                </div>
+    
+                <div class="campo">
+                    <label for="marcaProduto">Marca:</label>
+                    <br>
+                    <input type="text" name="marca" id="marcaProduto" readonly="readonly" value="<%=tabels[0].dataValues.marca%>">
+                </div>
+
+
+                <div class="campo">
+                    <label for="categoriaProduto">Categoria:</label>
+                    <!-- <br> -->
+                    <p class="lista" >
+                        <%tabels[0].possuis.forEach(function(tabel){%>
+                            <select name="d" class="itens">
+                                 
+                                         <option aria-readonly="true" value="<%=tabel.dataValues.categorium.dataValues.nome%>"><%=tabel.dataValues.categorium.dataValues.nome%></option>
+                                
+                            </select>
+                        <%})%>
+                     </p>
+                </div>
+
+                <div class="campo">
+                    <label for="quantidadeProduto">Quantidade:</label>
+                    <br>
+                    <input type="number" name="quantidade" id="quantidadeProduto" readonly="readonly" value="<%=tabels[0].dataValues.quantidade%>"> 
+                </div>
+                
+                <div class="campo">
+                    <label for="">Descrição do produto:</label>
+                    <br>
+                    <textarea name="descricao" id="areaDescricao" cols="30" rows="10" readonly="readonly"><%=tabels[0].dataValues.des%></textarea>
+                </div>
+                
+                <div id="divBotao">
+                    <a href="/"><button class="botao" style=" margin-bottom: 0px; margin-left: 37%; margin-right: 20px;" type="button">Voltar</button></a> 
+                    <button type="button" name="edit" class="botao" style=" margin-bottom: 0px; margin-right: 20px;" value="edit" onclick="mudar()">Editar</button>
+                    <input type="hidden" value="<%=tabels.image%>" name="imagem">
+                    <input type="hidden" name= "salvar"  id="save"  value="nada" name="imagem">
+                    <button type="submit" name="save" class="botao" style=" margin-bottom: 0px; margin-right: 20px;" value="<%=tabels.id%>">Salvar</button>
+                    <button type="submit" name="apagar" class="botao" value="<%=tabels[0].dataValues.id%>">Excluir</button>
+                    
+                </div>
+            </form>
+            </fieldset>
+            <script>
+                function mudar(){
+                    // document.getElementById("idProduto").removeAttribute('readonly');
+                    document.getElementById("nomeProduto").removeAttribute('readonly');
+                    document.getElementById("marcaProduto").removeAttribute('readonly');
+                    // document.getElementById("categoriaProduto").removeAttribute('readonly');
+                    document.getElementById("quantidadeProduto").removeAttribute('readonly');
+                    document.getElementById("areaDescricao").removeAttribute('readonly');
+                    document.getElementById("save").value="salvar"
+                    alert("modo edição");
+                }   
+            </script>
+        </div>
+        <footer id = "rodape"> <!--É o rodapé da página, onde fica as informações-->
+            &copy; Copyright 2021 - by <a href="https://github.com/Gustavo-caetano">Gustavo Caetano</a>  e <a href="https://github.com/Valmir-Cunha">Valmir Cunha</a> 
+        </footer>
+    </div>
+</body>
+</html>

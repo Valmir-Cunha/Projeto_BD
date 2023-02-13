@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="_css/estilo.css">
+    <link rel="stylesheet" href="_css/estiloCatalogoCategorias.css">
+    <style>
+        nav#menu{
+            display: block;
+        }
+
+        div#divBotao {
+            height: auto;
+            list-style: none;
+            text-transform: uppercase;
+            position: relative;
+            border-radius: 5px;
+            left: 35%;
+        }
+     
+        button.botaoCadastroCategoria {
+            font-size: 1.2em;
+            background-color:#dddddd;
+            border: 0;
+            margin-bottom: 1em;
+            padding: 0.2em 0.6em;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0,0.2);  
+            position: relative;
+            cursor: pointer;
+            margin-bottom: 0px;
+            top: 87%;
+            left: 42%;
+            margin-right: -35%;
+        }
+
+        .botaoCadastroCategoria:hover{
+            background-color: #606060;
+            box-shadow: inset 2px 2px 2px rgba(0, 0, 0,0.2);
+            text-shadow: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="interface">
+        <header id = "cabecalho">
+            <!-- <h1>Loja do Fulano</h1> -->
+            <nav id="menu" > <!-- Determina um menu de navegação, tudo que estiver dentro dessa tag será considerada parte do menu -->
+                <ul>
+                    <h1>Página inicial</h1>
+                    <li><a href="/">Página principal</a> </li> 
+                    <li><a href="categorias.ejs">Categorias</a></li>  
+                    <li><a href="sobre_nos.ejs">Sobre nós</a></li>
+                    <li><a href="login.ejs">Perfil</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div id="divBotao">
+            <a href="cadastroCategoria.ejs"><button class="botaoCadastroCategoria" >Cadastrar Categoria</button></a>
+        </div>
+        <h2>Categorias</h2>
+        <section class="catalogo" id="catalogo">
+        <%list.forEach(function(lists){%>
+                <div class="cardsCategoria">
+                    <div class="conteudoCard">
+                        <h4><%=lists.nome%></h4>
+                        <p><%=lists.des%></p>
+                        <form method="post" action="/categorias" >
+                        <div class="div">
+                        <input type="hidden"  class="valu" value="editar">
+                        <input type="hidden" name="sumido" id="value" value="no">
+                        <input type="hidden" name="categoria" value="<%=lists.id%>">
+                        </div>
+                        <button  id="bot" class="botaoVisualizar" name="catego" type="submit" value="<%=lists.id%>">Visualizar</button>
+                        </form>
+                    </div>
+                </div>
+            <br>
+        <%})%>
+        </section>
+        <footer id = "rodape"> <!--É o rodapé da página, onde fica as informações-->
+            &copy; Copyright 2021 - by <a href="https://github.com/Gustavo-caetano">Gustavo Caetano</a>  e <a href="https://github.com/Valmir-Cunha">Valmir Cunha</a> 
+        </footer>
+        <script>
+            function editar(){
+                document.getElementsByClassName("valu").type="submit";
+                document.getElementsById("sumido").value="edit";
+            }
+        </script>
+    </div>
+</body>
+</html>
